@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq0o8grxx62g4"]
+
+[ext_resource type="Script" path="res://scripts/start_button.gd" id="1_p3lx0"]
+[ext_resource type="Texture2D" uid="uid://dohfe81gqeb0n" path="res://assets/sprites/HomeBG.jpg" id="2_yb883"]
+
+[node name="HomeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 800.0
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(0, 47)
+scale = Vector2(0.469, 0.469)
+texture = ExtResource("2_yb883")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 446.0
+offset_right = 327.0
+offset_bottom = 536.0
+text = "GAME START"
+script = ExtResource("1_p3lx0")

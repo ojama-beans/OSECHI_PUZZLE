@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5b2w1xswajy7"]
+
+[ext_resource type="Texture2D" uid="uid://blxv8c3tc1mgy" path="res://assets/sprites/GameBG.jpg" id="1_2u24s"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 450.0
+offset_bottom = 800.0
+color = Color(0.619608, 0, 0, 1)
+
+[node name="GameBg" type="Sprite2D" parent="."]
+position = Vector2(0, 40)
+scale = Vector2(0.435, 0.436)
+texture = ExtResource("1_2u24s")
+centered = false

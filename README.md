@@ -10,9 +10,9 @@
 
 1. [`Editor`]タブの[`Editor Setting`]を開く
 2. [`external`]と検索して、[`TextEditor`]項目内の[`External`]を選択
-3. - [`Use External Editor`]を On にする
-   - [`Exec Path`]を使用するテキストエディタのパスを入力する(例:`C:/Users/xxx/AppData/Local/Programs/Microsoft VS Code/Code.exe`)
-   - [`Exec Flags`]に`{project} --goto {file}:{line}:{col}`と入力する
+3.  - [`Use External Editor`]をOnにする
+	- [`Exec Path`]を使用するテキストエディタのパスを入力する(例:`C:/Users/xxx/AppData/Local/Programs/Microsoft VS Code/Code.exe`)
+	- [`Exec Flags`]に`{project} --goto {file}:{line}:{col}`と入力する
 
 - VScode
 
@@ -30,5 +30,5 @@
 2. 目的のプロジェクトのフォルダを選択
 3. 追加できたら、.gd ファイルを選択して開いてみる
    - 画面左側のファイルアイコンから、エクスプローラーを開ける
-   - そこにある.gd ファイルをクリックして開いてみる(無ければ Godot 側で作成する)
+   - そこにある.gdファイルをクリックして開いてみる(無ければGodot側で作成する)
 4. コードに色がついていたら成功

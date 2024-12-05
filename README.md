@@ -7,8 +7,8 @@
 1. [`Editor`]タブの[`Editor Setting`]を開く
 2. [`external`]と検索して、[`TextEditor`]項目内の[`External`]を選択
 3.  - [`Use External Editor`]をOnにする
-    - [`Exec Path`]を使用するテキストエディタのパスを入力する(例:`C:/Users/xxx/AppData/Local/Programs/Microsoft VS Code/Code.exe`)
-    - [`Exec Flags`]に`{project} --goto {file}:{line}:{col}`と入力する
+	- [`Exec Path`]を使用するテキストエディタのパスを入力する(例:`C:/Users/xxx/AppData/Local/Programs/Microsoft VS Code/Code.exe`)
+	- [`Exec Flags`]に`{project} --goto {file}:{line}:{col}`と入力する
 
 - VScode
 1. 拡張機能をインストールする

@@ -15,12 +15,12 @@ position = Vector2(360, 640)
 texture = ExtResource("1_en7j5")
 
 [node name="explan_Button" type="Button" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_left = 204.0
 offset_top = 936.0
 offset_right = 538.0
 offset_bottom = 1036.0
-text = "ゲームの概要"
+text = "ゲーム説明"
 script = ExtResource("3_dfghj")
 
 [node name="start_Button" type="Button" parent="."]

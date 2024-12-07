@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://j3gry4iesw7h" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
 [ext_resource type="Script" path="res://scripts/explain/back_button.gd" id="3_dfghj"]
 
-
 [node name="Explain" type="Control"]
 layout_mode = 3
 anchors_preset = 0

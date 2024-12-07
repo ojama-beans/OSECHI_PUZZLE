@@ -21,11 +21,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		print("Mouse Motion at: ", event.position)
 
 func snap_to_grid(axis: String):
-	var mouse_pos = get_viewport().get_mouse_position()
-	var pos = position[axis]
-	if fmod(pos, Grobal.osechi_size) < (Grobal.osechi_size / 4):
-		position[axis] = (int(mouse_pos[axis]) / Grobal.osechi_size) * Grobal.osechi_size
-	elif fmod(pos, Grobal.osechi_size) >= (Grobal.osechi_size * 3 / 4):
-		position[axis] = ((int(mouse_pos[axis]) / Grobal.osechi_size) + 1) * Grobal.osechi_size
+	var mouse_pos = get_viewport().get_mouse_position()[axis]
+	if fmod(position[axis], Grobal.osechi_size) < (Grobal.osechi_size / 4):
+		position[axis] = (int(mouse_pos) / Grobal.osechi_size) * Grobal.osechi_size
+	elif fmod(position[axis], Grobal.osechi_size) >= (Grobal.osechi_size * 3 / 4):
+		position[axis] = ((int(mouse_pos) / Grobal.osechi_size) + 1) * Grobal.osechi_size
 	else:
-		position[axis] = mouse_pos[axis]
+		position[axis] = mouse_pos

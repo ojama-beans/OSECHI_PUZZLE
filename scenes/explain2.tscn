@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d31775v2sbynq"]
 
-[ext_resource type="Texture2D" uid="uid://j3gry4iesw7h" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
-[ext_resource type="Script" path="res://scripts/explain/back_button.gd" id="3_dfghj"]
+[ext_resource type="Texture2D" uid="uid://j3gry4iesw7h" path="res://assets/sprites/home/HomeBG.jpg" id="1_g6rno"]
+[ext_resource type="Script" path="res://scripts/explain/back_button.gd" id="2_2x4ot"]
 
 [node name="Explain" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 40.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 editor_description = "ads"
 position = Vector2(360, 640)
-texture = ExtResource("1_en7j5")
+texture = ExtResource("1_g6rno")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -42,4 +42,4 @@ offset_top = 1081.0
 offset_right = 538.0
 offset_bottom = 1180.0
 text = "ホームに戻る"
-script = ExtResource("3_dfghj")
+script = ExtResource("2_2x4ot")

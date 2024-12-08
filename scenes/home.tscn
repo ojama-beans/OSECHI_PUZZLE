@@ -10,7 +10,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(360, 640)
 texture = ExtResource("1_en7j5")
 
@@ -25,6 +25,7 @@ script = ExtResource("3_dfghj")
 
 [node name="start_Button" type="Button" parent="."]
 layout_mode = 0
+
 offset_left = 204.0
 offset_top = 1081.0
 offset_right = 538.0

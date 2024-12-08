@@ -16,9 +16,9 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
 
-[debug]
+[autoload]
 
-gdscript/warnings/untyped_declaration=2
+Grobal="*res://scripts/grobal.gd"
 
 [display]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cubyopn3vpxbp"]
+
+[ext_resource type="Script" path="res://scripts/osechi/osechi.gd" id="1_ec2jb"]
+[ext_resource type="Texture2D" uid="uid://el22vawljbqk" path="res://assets/sprites/osechi/osechi_1.png" id="1_qcjwp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqfvs"]
+size = Vector2(132, 133)
+
+[node name="Osechi_1" type="Area2D"]
+script = ExtResource("1_ec2jb")
+
+[node name="Osechi_1" type="Sprite2D" parent="."]
+texture = ExtResource("1_qcjwp")
+
+[node name="Collision_Osechi_1" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gqfvs")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

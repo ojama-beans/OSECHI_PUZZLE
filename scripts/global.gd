@@ -1,6 +1,17 @@
+extends Node
+
 const osechi_size = 64
 const can_place_puzzle = 1
-var grid: Array = []
+var grid = [
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0]
+]
 const osechi_shape = {
 	"Osechi_1": [
 		[1, 1], 

@@ -13,5 +13,3 @@ texture = ExtResource("1_x64yl")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_182hs")
-
-[node name="Osechi" type="Sprite2D" parent="."]

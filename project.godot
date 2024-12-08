@@ -18,12 +18,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Grobal="*res://scripts/grobal.gd"
+Global="*res://scripts/global.gd"
+SignalManager="*res://scripts/signal_manager.gd"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 
 [rendering]

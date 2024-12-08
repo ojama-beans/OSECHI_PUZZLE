@@ -17,6 +17,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			_drag_mode = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_drag_mode = false
+			place_on_grid()
 			emit_signal("placed_osechi_1")
 
 func snap_to_grid(axis: String):
@@ -27,3 +28,7 @@ func snap_to_grid(axis: String):
 		position[axis] = ((int(mouse_pos) / Global.osechi_size) + 1) * Global.osechi_size
 	else:
 		position[axis] = mouse_pos
+
+func place_on_grid() -> void:
+	# ここにパズルを配置する処理を書く
+	pass

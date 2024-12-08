@@ -12,17 +12,27 @@ var _unplaced_puzzle = Global.can_place_puzzle
 # 盤面の状態が変わったフラグ
 var _grid_changed = false
 
+var _grid = [
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0], 
+		[0, 0, 0, 0, 0, 0, 0, 0]
+]
+
 func _ready() -> void:
 	place_puzzle()
 
 func _process(delta: float) -> void:
 	if _grid_changed:
 		for osechi in _osechies:
-			if can_place(Global.osechi_shape[osechi.name]):
+			if can_place(Global.osechi_shape[osechi.find_child("Osechi_?").name]):
 				_grid_changed = false
 			else:
 				# ゲームオーバー処理
-				print("Game Over")
 				pass
 	if _unplaced_puzzle == 0:
 		_osechies.clear()
@@ -31,7 +41,6 @@ func _process(delta: float) -> void:
 		_grid_changed = true
 
 func _on_placed_osechi_1() -> void:
-	print("Placed")
 	_unplaced_puzzle -= 1
 	_grid_changed = true
 
@@ -43,8 +52,8 @@ func place_puzzle() -> void:
 		_osechies.append(osechi)
 
 func can_place(puzzle) -> bool:
-	var grid_rows = Global.grid.size()
-	var grid_cols = Global.grid[0].size()
+	var grid_rows = _grid.size()
+	var grid_cols = _grid[0].size()
 	var puzzle_rows = puzzle.size()
 	var puzzle_cols = puzzle[0].size()
 	for i in range(grid_rows - puzzle_rows + 1):
@@ -52,12 +61,11 @@ func can_place(puzzle) -> bool:
 			var can_place_here = true
 			for x in range(puzzle_rows):
 				for y in range(puzzle_cols):
-					if Global.grid[i + x][j + y] == 1 and puzzle[x][y] == 1:
+					if _grid[i + x][j + y] == 1 and puzzle[x][y] == 1:
 						can_place_here = false
 						break
 				if not can_place_here:
 					break
 			if can_place_here:
 				return true
-		
 	return false

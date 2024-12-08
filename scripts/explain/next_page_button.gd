@@ -6,4 +6,4 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	# ゲーム画面への遷移
 
-	get_tree().change_scene_to_file("res://scenes/explain1.tscn")
+	get_tree().change_scene_to_file("res://scenes/explain2.tscn")

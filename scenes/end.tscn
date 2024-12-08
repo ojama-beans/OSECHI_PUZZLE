@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2yactftrjyl6"]
+
+[ext_resource type="Script" path="res://scripts/end/end.gd" id="1_mq8v0"]
+[ext_resource type="Script" path="res://scripts/explain/back_button.gd" id="2_gwcwd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qedwf"]
+line_spacing = 20.0
+font_size = 90
+font_color = Color(0.948704, 0.830696, 0.828863, 1)
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mq8v0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "ゲームオーバー"
+label_settings = SubResource("LabelSettings_qedwf")
+
+[node name="back_Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 204.0
+offset_top = 1081.0
+offset_right = 538.0
+offset_bottom = 1180.0
+text = "ホームに戻る"
+script = ExtResource("2_gwcwd")

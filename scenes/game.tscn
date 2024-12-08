@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://p05o4t2p5knj"]
+[gd_scene load_steps=5 format=3 uid="uid://p05o4t2p5knj"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_srota"]
 [ext_resource type="Texture2D" uid="uid://d1ymwx1jc60yu" path="res://assets/sprites/game/GameBG.jpg" id="1_x64yl"]
 [ext_resource type="TileSet" uid="uid://x1w0oo0m374a" path="res://assets/tiles/game/tile_set.tres" id="2_182hs"]
+[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="4_ikesf"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_srota")
@@ -15,3 +16,5 @@ texture = ExtResource("1_x64yl")
 tile_set = ExtResource("2_182hs")
 
 [node name="Osechi" type="Sprite2D" parent="."]
+
+[node name="End" parent="." instance=ExtResource("4_ikesf")]

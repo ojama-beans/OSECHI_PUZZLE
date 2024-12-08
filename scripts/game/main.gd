@@ -29,10 +29,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _grid_changed:
 		for osechi in _osechies:
-			if can_place(Global.osechi_shape[osechi.find_child("Osechi_?").name]):
+			if not can_place(Global.osechi_shape[osechi.find_child("Osechi_?").name]):
 				_grid_changed = false
 			else:
-				# ゲームオーバー処理
+				SignalManager.on_game_complete.emit()
 				pass
 	if _unplaced_puzzle == 0:
 		_osechies.clear()

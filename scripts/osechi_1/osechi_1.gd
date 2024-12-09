@@ -19,25 +19,21 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			_drag_mode = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-			print(Global.origin)
 			_drag_mode = false
 			if on_grid():
 				_has_moved = true
 				snap_to_grid()
 				place_on_grid()
-				emit_signal("placed_osechi_1")
+				placed_osechi_1.emit()
 
 func snap_to_grid() -> void:
 	snap_to_grid_axis("x")
 	snap_to_grid_axis("y")
-	print("position", position)
 
 func snap_to_grid_axis(axis: String) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()[axis]
 	var pos = position[axis] - Global.origin[axis]
-	print("pos = ", pos)
 	var modded_pos = fmod(pos, Global.osechi_size)
-	print("mod = ", modded_pos)
 	if modded_pos < (Global.osechi_size / 2):
 		position[axis] = (int(mouse_pos - Global.origin[axis]) / Global.osechi_size) * Global.osechi_size + Global.origin[axis]
 	else:
@@ -55,4 +51,3 @@ func place_on_grid() -> void:
 	for i in shape[0].size():
 		for j in shape.size():
 			Global.grid[pos_on_grid.y + i][pos_on_grid.x + j] = shape[i][j]
-	print(Global.grid)

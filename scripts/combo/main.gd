@@ -1,7 +1,5 @@
 extends Node
 
-@onready var game_node = $"../../"
-
 @onready var canvas_layer_node = $"../"
 
 @onready var timer_node = $"../../Timer"
@@ -9,7 +7,7 @@ extends Node
 @onready var video_stream_player_node = $VideoStreamPlayer
 
 func _ready() -> void:
-	game_node.connect("combo_occurred", Callable(self, "_on_combo_occurred"))
+	SignalManager.combo_occurred.connect(_on_combo_occurred)
 	canvas_layer_node.visible = false
 
 func _process(delta: float) -> void:

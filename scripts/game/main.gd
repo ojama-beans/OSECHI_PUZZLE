@@ -10,7 +10,7 @@ signal combo_occurred(combo: int)
 @onready var timer_node = $Timer
 
 # Comboノードをロード
-@onready var combo_node = $Combo
+@onready var combo_node = $"CanvasLayer/Combo"
 
 # 動的生成されたosechiノードの参照リスト
 var _osechies = []
@@ -30,7 +30,6 @@ var _placed_id = ""
 func _ready() -> void:
 	generate_osechi()
 	timer_node.start(Global.timer)
-
 
 func _process(delta: float) -> void:
 	if _grid_changed:

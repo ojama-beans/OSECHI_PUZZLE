@@ -1,16 +1,10 @@
 extends Node2D
 
-# コンボ発生時のシグナル
-signal combo_occurred(combo: int)
-
 # osechiノードのシーンをロード
 @onready var osechi_scene = preload("res://scenes/osechi_1.tscn")
 
 # Timerノードをロード
 @onready var timer_node = $Timer
-
-# Comboノードをロード
-@onready var combo_node = $"CanvasLayer/Combo"
 
 # 動的生成されたosechiノードの参照リスト
 var _osechies = []
@@ -52,8 +46,7 @@ func _on_placed_osechi_1(placed: Vector2i, id: String) -> void:
 	_placed_id = id
 	var combo = next_to_osechi()
 	if combo:
-		combo_occurred.emit(combo)
-		pass
+		SignalManager.combo_occurred.emit(combo)
 	Score.add()
 
 func generate_osechi() -> void:

@@ -10,10 +10,11 @@ size = Vector2(132, 133)
 script = ExtResource("1_uqifp")
 
 [node name="Osechi_1" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
 texture = ExtResource("1_qcjwp")
 
 [node name="Collision_Osechi_1" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_gqfvs")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

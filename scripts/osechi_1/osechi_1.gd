@@ -5,9 +5,9 @@ signal placed_osechi_1
 var _drag_mode = false
 var _on_grid = false
 const _shape = Global.osechi_shape["Osechi_1"]
-var _prev_pos = Vector2()
-var _diff = Vector2()
-const _return_speed = 1000
+var _before_move = Vector2.ZERO
+var _diff = Vector2.ZERO
+const _return_speed = 10
 
 func _ready() -> void:
 	pass
@@ -16,21 +16,23 @@ func _process(delta: float) -> void:
 	if _drag_mode:
 		position = get_viewport().get_mouse_position() - _diff
 	elif _on_grid:
-		# if overlap():
-			# move_towards(_prev_pos, delta * _return_speed)
-		# else:
-		snap_to_grid()
-		place_on_grid()
-		placed_osechi_1.emit()
-		set_process(false)
-		set_process_input(false)
+		var snapped_pos = snap_to_grid()
+		if overlap(snapped_pos):
+			position = _before_move
+			_on_grid = false
+		else:
+			position = snapped_pos
+			place_on_grid()
+			placed_osechi_1.emit()
+			set_process(false)
+			set_process_input(false)
 		
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is not InputEventMouseButton:
 		return
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not _drag_mode:
-			_prev_pos = position
+			_before_move = position
 			_diff = get_viewport().get_mouse_position() - position
 			_drag_mode = true
 	elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
@@ -38,7 +40,16 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if on_grid():
 			_on_grid = true
 
-func snap_to_grid() -> void:
+func overlap(snapped_pos: Vector2) -> bool:
+	var pos_on_grid_modded = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size
+	for i in _shape[0].size():
+		for j in _shape.size():
+			if _shape[i][j] and Global.grid[pos_on_grid_modded.y + i][pos_on_grid_modded.x + j]:
+				return true
+	return false
+
+func snap_to_grid() -> Vector2:
+	var snapped_pos = Vector2.ZERO
 	for axis in ["x", "y"]:
 		var mouse_pos = get_viewport().get_mouse_position()[axis] - _diff[axis]
 		var pos = position[axis] - Global.origin[axis]
@@ -48,7 +59,8 @@ func snap_to_grid() -> void:
 			ratio_on_grid = int(mouse_pos - Global.origin[axis]) / Global.osechi_size
 		else:
 			ratio_on_grid = (int(mouse_pos - Global.origin[axis]) / Global.osechi_size) + 1
-		position[axis] = ratio_on_grid * Global.osechi_size + Global.origin[axis]
+		snapped_pos[axis] = ratio_on_grid * Global.osechi_size + Global.origin[axis]
+	return snapped_pos
 
 func on_grid() -> bool:
 	var pos_on_grid = position - Vector2(Global.origin)

@@ -3,6 +3,9 @@ extends Node2D
 # osechiノードのシーンをロード
 @onready var osechi_scene = preload("res://scenes/osechi_1.tscn")
 
+# Timerノードをロード
+@onready var timer = $Timer
+
 # 動的生成されたosechiノードの参照リスト
 var _osechies: Array = []
 
@@ -14,6 +17,7 @@ var _grid_changed = false
 
 func _ready() -> void:
 	place_puzzle()
+	timer.start(Global.timer)
 
 func _process(delta: float) -> void:
 	if _grid_changed:

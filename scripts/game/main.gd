@@ -1,29 +1,36 @@
 extends Node2D
 
+# コンボ発生時のシグナル
+signal combo_occurred(combo: int)
+
 # osechiノードのシーンをロード
 @onready var osechi_scene = preload("res://scenes/osechi_1.tscn")
 
 # Timerノードをロード
-@onready var timer = $Timer
+@onready var timer_node = $Timer
+
+# Comboノードをロード
+@onready var combo_node = $Combo
 
 # 動的生成されたosechiノードの参照リスト
 var _osechies = []
 
-# 未配置のパズルの数
-var _unplaced_puzzle = Global.can_place_puzzle
+# 未配置のosechiの数
+var _unplaced_osechi = Global.can_place_osechi
 
 # 盤面の状態が変わったフラグ
 var _grid_changed = false
 
-# 置かれたパズルの座標
-var _placed_puzzle = Vector2i.ZERO
+# 置かれたosechiの座標
+var _placed_osechi = Vector2i.ZERO
 
-# 置かれたパズルのID
+# 置かれたosechiのID
 var _placed_id = ""
 
 func _ready() -> void:
-	place_puzzle()
-	timer.start(Global.timer)
+	generate_osechi()
+	timer_node.start(Global.timer)
+
 
 func _process(delta: float) -> void:
 	if _grid_changed:
@@ -33,40 +40,40 @@ func _process(delta: float) -> void:
 			else:
 				# ゲームオーバー処理
 				pass
-	if _unplaced_puzzle == 0:
+	if _unplaced_osechi == 0:
 		_osechies.clear()
-		place_puzzle()
-		_unplaced_puzzle = Global.can_place_puzzle
+		generate_osechi()
+		_unplaced_osechi = Global.can_place_osechi
 		_grid_changed = true
 
 func _on_placed_osechi_1(placed: Vector2i, id: String) -> void:
-	_unplaced_puzzle -= 1
+	_unplaced_osechi -= 1
 	_grid_changed = true
-	_placed_puzzle = placed
+	_placed_osechi = placed
 	_placed_id = id
 	var combo = next_to_osechi()
 	if combo:
-		# コンボ処理
+		combo_occurred.emit(combo)
 		pass
 
-func place_puzzle() -> void:
-	for i in range(Global.can_place_puzzle):
+func generate_osechi() -> void:
+	for i in range(Global.can_place_osechi):
 		var osechi = osechi_scene.instantiate()
 		add_child(osechi)
 		osechi.connect("placed_osechi_1", Callable(self, "_on_placed_osechi_1"))
 		_osechies.append(osechi)
 
-func can_place(puzzle) -> bool:
+func can_place(osechi) -> bool:
 	var grid_rows = Global.grid.size()
 	var grid_cols = Global.grid[0].size()
-	var puzzle_rows = puzzle.size()
-	var puzzle_cols = puzzle[0].size()
-	for i in range(grid_rows - puzzle_rows + 1):
-		for j in range(grid_cols - puzzle_cols + 1):
+	var osechi_rows = osechi.size()
+	var osechi_cols = osechi[0].size()
+	for i in range(grid_rows - osechi_rows + 1):
+		for j in range(grid_cols - osechi_cols + 1):
 			var can_place_here = true
-			for x in range(puzzle_rows):
-				for y in range(puzzle_cols):
-					if Global.grid[i + x][j + y] != 0 and puzzle[x][y] != 0:
+			for x in range(osechi_rows):
+				for y in range(osechi_cols):
+					if Global.grid[i + x][j + y] != 0 and osechi[x][y] != 0:
 						can_place_here = false
 						break
 				if not can_place_here:
@@ -77,7 +84,7 @@ func can_place(puzzle) -> bool:
 
 func next_to_osechi() -> int:
 	var combo = 0
-	var pos_on_grid_modded = (_placed_puzzle - Global.origin) / Global.osechi_size
+	var pos_on_grid_modded = (_placed_osechi - Global.origin) / Global.osechi_size
 	var shape = Global.osechi_shape[_placed_id]
 	# osechiの角の座標
 	var osechi = {

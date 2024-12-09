@@ -2,30 +2,39 @@ extends Area2D
 
 signal placed_osechi_1
 
-var _has_moved = false
 var _drag_mode = false
+var _on_grid = false
 const _shape = Global.osechi_shape["Osechi_1"]
+var _prev_pos = Vector2()
+var _diff = Vector2()
+const _return_speed = 1000
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
 	if _drag_mode:
-		position = get_viewport().get_mouse_position()
+		position = get_viewport().get_mouse_position() - _diff
+	elif _on_grid:
+		if overlap():
+			move_towards(_prev_pos, delta * _return_speed)
+		else:
+			snap_to_grid()
+			place_on_grid()
+			placed_osechi_1.emit()
+			set_process_input(false)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if _has_moved:
-		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if not _drag_mode:
+				_prev_pos = position
+				_diff = get_viewport().get_mouse_position() - position
 			_drag_mode = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_drag_mode = false
 			if on_grid():
-				_has_moved = true
-				snap_to_grid()
-				place_on_grid()
-				placed_osechi_1.emit()
+				_on_grid = true
 
 func snap_to_grid() -> void:
 	snap_to_grid_axis("x")

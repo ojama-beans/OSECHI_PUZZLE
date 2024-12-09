@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 SignalManager="*res://scripts/signal_manager.gd"
+Score="*res://scripts/score.gd"
 
 [display]
 

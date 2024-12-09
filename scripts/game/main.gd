@@ -54,6 +54,7 @@ func _on_placed_osechi_1(placed: Vector2i, id: String) -> void:
 	if combo:
 		combo_occurred.emit(combo)
 		pass
+	Score.add()
 
 func generate_osechi() -> void:
 	for i in range(Global.can_place_osechi):

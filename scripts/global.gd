@@ -22,3 +22,4 @@ const screen_size = Vector2i(720, 1280)
 var grid_size = osechi_size * grid.size()
 var origin = Vector2i((screen_size.x - grid_size) / 2, (screen_size.y - grid_size) / 2)
 const timer = 60
+const score = 5

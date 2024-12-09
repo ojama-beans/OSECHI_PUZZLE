@@ -31,8 +31,7 @@ func _process(delta: float) -> void:
 			if can_place(Global.osechi_shape[osechi.find_child("Osechi_?").name]):
 				_grid_changed = false
 			else:
-				# ゲームオーバー処理
-				pass
+				SignalManager.cannot_place_osechi.emit()
 	if _unplaced_osechi == 0:
 		_osechies.clear()
 		generate_osechi()

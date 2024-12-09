@@ -2,6 +2,8 @@ extends Control
 
 @onready var background: ColorRect = $Background
 
+@onready var canvas_layer_node = $"../"
+
 func _ready() -> void:
 	# 常時プロセスを有効化
 	set_process_mode(Node2D.PROCESS_MODE_ALWAYS)
@@ -10,12 +12,12 @@ func _ready() -> void:
 
 # HUDを非表示
 func hide_hud()-> void:
-	background.visible = false
+	canvas_layer_node.visible = false
 
 # HUDを表示
 func show_hud()-> void:
 	get_tree().paused = true  # ゲームを一時停止
-	background.visible = true
+	canvas_layer_node.visible = true
 
 # ゴール時に呼び出される関数
 func _on_game_complete()-> void:

@@ -18,8 +18,12 @@ const osechi_shape = {
 		[2**0, 2**0]
 	],
 }
-const screen_size = Vector2i(720, 1280)
+
 var grid_size = osechi_size * grid.size()
-var origin = Vector2i((screen_size.x - grid_size) / 2, (screen_size.y - grid_size) / 2)
+var origin = Vector2i.ZERO
 const timer = 60
 const score = 5
+
+func _ready() -> void:
+	var screen_size = get_viewport().get_visible_rect().size
+	origin = Vector2i((screen_size.x - grid_size) / 2, (screen_size.y - grid_size) / 2)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://p05o4t2p5knj"]
+[gd_scene load_steps=7 format=3 uid="uid://p05o4t2p5knj"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_srota"]
 [ext_resource type="Texture2D" uid="uid://d1ymwx1jc60yu" path="res://assets/sprites/game/GameBG.jpg" id="1_x64yl"]
 [ext_resource type="Texture2D" uid="uid://c0t6ues1ho5tp" path="res://assets/sprites/game/grid.png" id="3_25ofj"]
 [ext_resource type="Script" path="res://scripts/timer/main.gd" id="4_iug3y"]
+[ext_resource type="Script" path="res://scripts/combo/main.gd" id="5_5ybyh"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_wn4m0"]
+file = "res://assets/video/shison_hanei.ogv"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_srota")
@@ -17,3 +21,15 @@ texture = ExtResource("3_25ofj")
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("4_iug3y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Combo" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("5_5ybyh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Combo"]
+offset_top = 440.0
+offset_right = 720.0
+offset_bottom = 840.0
+stream = SubResource("VideoStreamTheora_wn4m0")
+metadata/_edit_use_anchors_ = true

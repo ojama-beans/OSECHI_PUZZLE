@@ -1,7 +1,7 @@
 extends Node
 
 const osechi_size = 64
-const can_place_puzzle = 1
+const can_place_osechi = 1
 var grid = [
 		[0, 0, 0, 0, 0, 0, 0, 0], 
 		[0, 0, 0, 0, 0, 0, 0, 0], 

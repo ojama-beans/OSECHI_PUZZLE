@@ -47,7 +47,6 @@ func _on_placed_osechi_1(placed: Vector2i, id: String) -> void:
 	var combo = next_to_osechi()
 	if combo:
 		# コンボ処理
-		print(combo)
 		pass
 
 func place_puzzle() -> void:
@@ -101,7 +100,6 @@ func next_to_osechi() -> int:
 		"top": judge["left_top"].y >= 0,
 		"bottom": judge["left_bottom"].y < Global.grid.size()
 	}
-	print("in_grid", in_grid)
 	for x in range(shape[0].size()):
 		# 上と下の判定
 		combo |= (Global.grid[judge["left_top"].y][judge["left_top"].x + 1 + x] & shape[0][x] if in_grid["top"] else 0)

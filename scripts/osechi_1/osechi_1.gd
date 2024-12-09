@@ -1,6 +1,6 @@
 extends Area2D
 
-signal placed_osechi_1
+signal placed_osechi_1(placed: Vector2i, id: String)
 
 var _drag_mode = false
 var _on_grid = false
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		else:
 			position = snapped_pos
 			place_on_grid()
-			placed_osechi_1.emit()
+			placed_osechi_1.emit(position, "Osechi_1")
 			set_process(false)
 			set_process_input(false)
 		
@@ -44,7 +44,7 @@ func overlap(snapped_pos: Vector2) -> bool:
 	var pos_on_grid_modded = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size
 	for i in _shape[0].size():
 		for j in _shape.size():
-			if _shape[i][j] and Global.grid[pos_on_grid_modded.y + i][pos_on_grid_modded.x + j]:
+			if _shape[i][j] != 0 and Global.grid[pos_on_grid_modded.y + i][pos_on_grid_modded.x + j] != 0:
 				return true
 	return false
 

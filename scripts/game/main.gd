@@ -7,13 +7,19 @@ extends Node2D
 @onready var timer = $Timer
 
 # 動的生成されたosechiノードの参照リスト
-var _osechies: Array = []
+var _osechies = []
 
 # 未配置のパズルの数
 var _unplaced_puzzle = Global.can_place_puzzle
 
 # 盤面の状態が変わったフラグ
 var _grid_changed = false
+
+# 置かれたパズルの座標
+var _placed_puzzle = Vector2i.ZERO
+
+# 置かれたパズルのID
+var _placed_id = ""
 
 func _ready() -> void:
 	place_puzzle()
@@ -33,9 +39,15 @@ func _process(delta: float) -> void:
 		_unplaced_puzzle = Global.can_place_puzzle
 		_grid_changed = true
 
-func _on_placed_osechi_1() -> void:
+func _on_placed_osechi_1(placed: Vector2i, id: String) -> void:
 	_unplaced_puzzle -= 1
 	_grid_changed = true
+	_placed_puzzle = placed
+	_placed_id = id
+	var combo = next_to_osechi()
+	if combo:
+		# コンボ処理
+		pass
 
 func place_puzzle() -> void:
 	for i in range(Global.can_place_puzzle):
@@ -54,7 +66,7 @@ func can_place(puzzle) -> bool:
 			var can_place_here = true
 			for x in range(puzzle_rows):
 				for y in range(puzzle_cols):
-					if Global.grid[i + x][j + y] == 1 and puzzle[x][y] == 1:
+					if Global.grid[i + x][j + y] != 0 and puzzle[x][y] != 0:
 						can_place_here = false
 						break
 				if not can_place_here:
@@ -62,3 +74,38 @@ func can_place(puzzle) -> bool:
 			if can_place_here:
 				return true
 	return false
+
+func next_to_osechi() -> int:
+	var combo = 0
+	var pos_on_grid_modded = (_placed_puzzle - Global.origin) / Global.osechi_size
+	var shape = Global.osechi_shape[_placed_id]
+	# osechiの角の座標
+	var osechi = {
+		"left_top": pos_on_grid_modded,
+		"right_top": Vector2i(pos_on_grid_modded.x + shape[0].size(), pos_on_grid_modded.y),
+		"left_bottom": Vector2i(pos_on_grid_modded.x, pos_on_grid_modded.y + shape.size()),
+		"right_bottom": pos_on_grid_modded + Vector2i(shape[0].size(), shape.size())
+	}
+	# 判定範囲の座標
+	var judge = {
+		"left_top": Vector2i(osechi["left_top"].x - 1, osechi["left_top"].y - 1),
+		"right_top": Vector2i(osechi["right_top"].x, osechi["right_top"].y - 1),
+		"left_bottom": Vector2i(osechi["left_bottom"].x - 1, osechi["left_bottom"].y),
+		"right_bottom": Vector2i(osechi["right_bottom"].x, osechi["right_bottom"].y)
+	}
+	# 判定範囲がgrid内にあるか
+	var in_grid = {
+		"left": judge["left_top"].x >= 0,
+		"right": judge["right_top"].x < Global.grid[0].size(),
+		"top": judge["left_top"].y >= 0,
+		"bottom": judge["left_bottom"].y < Global.grid.size()
+	}
+	for x in range(shape[0].size()):
+		# 上と下の判定
+		combo |= (Global.grid[judge["left_top"].y][judge["left_top"].x + 1 + x] & shape[0][x] if in_grid["top"] else 0)
+		combo |= (Global.grid[judge["right_bottom"].y][judge["left_top"].x + 1 + x] & shape[shape.size() - 1][x] if in_grid["bottom"] else 0)
+	for y in range(shape.size()):
+		# 左と右の判定
+		combo |= (Global.grid[judge["left_top"].y + 1 + y][judge["left_top"].x] & shape[y][0] if in_grid["left"] else 0)
+		combo |= (Global.grid[judge["left_top"].y + 1 + y][judge["right_bottom"].x] & shape[y][shape[0].size() - 1] if in_grid["right"] else 0)
+	return combo

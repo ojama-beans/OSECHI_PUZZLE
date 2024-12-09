@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_combo_occurred(combo: int) -> void:
 	canvas_layer_node.visible = true
+	Score.combo()
 	combo_effct(combo)
 
 func _on_video_finished() -> void:

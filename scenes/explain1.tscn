@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://dycp1fg563ogl"]
+
+[ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_g6rno"]
+[ext_resource type="Script" path="res://scripts/explain/explain_1.gd" id="1_jykfx"]
+[ext_resource type="Texture2D" uid="uid://d0omaaddy0r6d" path="res://assets/sprites/explain/SamplePhoto.jpg" id="3_2x4ot"]
+
+[node name="Explain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jykfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+editor_description = "ads"
+position = Vector2(360, 640)
+scale = Vector2(0.291099, 0.364957)
+texture = ExtResource("1_g6rno")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+offset_left = 90.0
+offset_right = 630.0
+offset_bottom = 1050.0
+color = Color(0.977937, 0.977937, 0.977937, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+modulate = Color(0.464667, 0.0590557, 0.102808, 1)
+self_modulate = Color(0.891459, 0.650957, 0.850587, 1)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 825.0
+offset_right = 505.0
+offset_bottom = 994.0
+bbcode_enabled = true
+text = "画面上部に出来立ておせちパズルがでてくるよ
+一つずつ隙間ができないように詰め合わせよう！"
+fit_content = true
+autowrap_mode = 1
+tab_size = 40
+
+[node name="Sprite2D2" type="Sprite2D" parent="ColorRect"]
+editor_description = "ads"
+position = Vector2(268, 404)
+texture = ExtResource("3_2x4ot")
+
+[node name="back_Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 204.0
+offset_top = 1081.0
+offset_right = 538.0
+offset_bottom = 1180.0
+text = "次のページへ"
+
+[node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

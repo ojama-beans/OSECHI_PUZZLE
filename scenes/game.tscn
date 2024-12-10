@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://p05o4t2p5knj"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_srota"]
-[ext_resource type="Texture2D" uid="uid://d1ymwx1jc60yu" path="res://assets/sprites/game/GameBG.jpg" id="1_x64yl"]
+[ext_resource type="Texture2D" uid="uid://rx5tcuv7yhmx" path="res://assets/sprites/game/GameBG.jpg" id="1_x64yl"]
 [ext_resource type="Texture2D" uid="uid://c0t6ues1ho5tp" path="res://assets/sprites/game/grid.png" id="3_25ofj"]
 [ext_resource type="Script" path="res://scripts/timer/main.gd" id="4_iug3y"]
 [ext_resource type="Script" path="res://scripts/combo/main.gd" id="5_5ybyh"]
@@ -15,6 +15,7 @@ script = ExtResource("1_srota")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(360, 640)
+scale = Vector2(0.291, 0.365)
 texture = ExtResource("1_x64yl")
 
 [node name="Grid" type="Sprite2D" parent="Background"]

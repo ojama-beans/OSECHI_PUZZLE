@@ -26,6 +26,7 @@ Grobal="*res://scripts/grobal.gd"
 Global="*res://scripts/global.gd"
 SignalManager="*res://scripts/signal_manager.gd"
 AudioStreamManeger="*res://scripts/AudioStreamManeger/audio_stream_maneger.gd"
+Score="*res://scripts/score.gd"
 
 [display]
 

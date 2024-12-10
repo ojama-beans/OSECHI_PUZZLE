@@ -1,7 +1,10 @@
 extends Control
 
-var button_sound = preload("res://.godot/imported/和太鼓でドドン.mp3-6c70c347e28623d8cb4d13c130ae58e9.mp3str")
+var button_sound = preload("res://.godot/imported/決定ボタンを押す44.mp3-7c669fdc170656b73228f68225242436.mp3str")
+var bgm=preload("res://assets/sounds/ことほぎ.mp3")
 
+func  _ready():
+	AudioStreamManeger.play_bgm(bgm)	
 func _on_back_button_pressed() -> void:
 	var tree = get_tree()
 	if tree != null:

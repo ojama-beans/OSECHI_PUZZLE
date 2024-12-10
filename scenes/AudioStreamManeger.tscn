@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2l3diendmxl7"]
-
-[ext_resource type="AudioStream" uid="uid://df3totrvsogma" path="res://assets/sounds/和太鼓でドドン.mp3" id="1_7eq8l"]
-[ext_resource type="Script" path="res://scripts/AudioStreamManeger/audio_stream_maneger.gd" id="2_s8cyv"]
-
-[node name="AudioStreamManeger" type="AudioStreamPlayer"]
-stream = ExtResource("1_7eq8l")
-script = ExtResource("2_s8cyv")

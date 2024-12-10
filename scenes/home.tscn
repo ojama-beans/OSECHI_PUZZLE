@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cutlf54n6psvt"]
 
 [ext_resource type="Texture2D" uid="uid://j3gry4iesw7h" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
-[ext_resource type="Script" path="res://scripts/home/start_button.gd" id="2_gwcwd"]
-[ext_resource type="Script" path="res://scripts/home/explain_button.gd" id="3_dfghj"]
+[ext_resource type="Script" path="res://scripts/home/home.gd" id="1_stf8m"]
+[ext_resource type="AudioStream" uid="uid://c70kuloyciikh" path="res://assets/sounds/決定ボタンを押す6.mp3" id="3_n6n6f"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_stf8m")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(360, 640)
@@ -21,7 +22,6 @@ offset_top = 936.0
 offset_right = 538.0
 offset_bottom = 1036.0
 text = "ゲーム説明"
-script = ExtResource("3_dfghj")
 
 [node name="start_Button" type="Button" parent="."]
 layout_mode = 0
@@ -30,4 +30,9 @@ offset_top = 1081.0
 offset_right = 538.0
 offset_bottom = 1180.0
 text = "ゲームスタート"
-script = ExtResource("2_gwcwd")
+
+[node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n6n6f")
+
+[connection signal="pressed" from="explan_Button" to="." method="_on_explan_button_pressed"]
+[connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]

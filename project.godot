@@ -16,10 +16,16 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
 
+[audio]
+
+general/2d_panning_strength=1.0
+
 [autoload]
 
+Grobal="*res://scripts/grobal.gd"
 Global="*res://scripts/global.gd"
 SignalManager="*res://scripts/signal_manager.gd"
+AudioStreamManeger="*res://scripts/AudioStreamManeger/audio_stream_maneger.gd"
 
 [display]
 

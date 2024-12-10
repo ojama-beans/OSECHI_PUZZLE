@@ -1,14 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://d31775v2sbynq"]
 
 [ext_resource type="Texture2D" uid="uid://j3gry4iesw7h" path="res://assets/sprites/home/HomeBG.jpg" id="1_g6rno"]
-[ext_resource type="Script" path="res://scripts/explain/back_button.gd" id="2_2x4ot"]
+[ext_resource type="Script" path="res://scripts/explain/explain_2.gd" id="1_jykfx"]
 [ext_resource type="Texture2D" uid="uid://d0omaaddy0r6d" path="res://assets/sprites/explain/SamplePhoto.jpg" id="3_2x4ot"]
+[ext_resource type="AudioStream" uid="uid://c70kuloyciikh" path="res://assets/sounds/決定ボタンを押す6.mp3" id="3_n6n6f"]
+
 
 [node name="Explain" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_jykfx")
+
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 editor_description = "ads"
@@ -48,4 +52,8 @@ offset_top = 1081.0
 offset_right = 538.0
 offset_bottom = 1180.0
 text = "ホームに戻る"
-script = ExtResource("2_2x4ot")
+
+[node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n6n6f")
+
+[connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

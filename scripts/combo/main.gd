@@ -25,5 +25,6 @@ func _on_video_finished() -> void:
 func combo_effct(combo: int) -> void:
 	timer_node.paused = true
 	# combo id に応じて再生するファイルを決める
-	video_stream_player_node.finished.connect(_on_video_finished)
-	video_stream_player_node.play()
+	if combo == (2**0 & 2**1 & 2**2):
+		video_stream_player_node.finished.connect(_on_video_finished)
+		video_stream_player_node.play()

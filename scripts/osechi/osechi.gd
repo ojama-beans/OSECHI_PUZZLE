@@ -1,16 +1,19 @@
 extends Area2D
 
-signal placed_osechi_1(placed: Vector2i, id: String)
+signal placed_osechi(placed: Vector2i, id: Node)
 
+var _name = ""
 var _drag_mode = false
 var _on_grid = false
-const _shape = Global.osechi_shape["Osechi_1"]
+var _shape = []
 var _before_move = Vector2.ZERO
 var _diff = Vector2.ZERO
 const _return_speed = 10
 
 func _ready() -> void:
-	pass
+	_name = find_child("Osechi_?").name
+	_shape = Global.osechi_shape[_name]
+	set_collision_shape()
 
 func _process(delta: float) -> void:
 	if _drag_mode:
@@ -23,7 +26,7 @@ func _process(delta: float) -> void:
 		else:
 			position = snapped_pos
 			place_on_grid()
-			placed_osechi_1.emit(position, "Osechi_1")
+			placed_osechi.emit(position, self)
 			set_process(false)
 			set_process_input(false)
 		
@@ -40,11 +43,16 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if on_grid():
 			_on_grid = true
 
+func set_collision_shape() -> void:
+	var shape = ConvexPolygonShape2D.new()
+	shape.set_points(Global.collision_shape[_name])
+	find_child("Collision_Osechi_?").shape = shape
+
 func overlap(snapped_pos: Vector2) -> bool:
 	var pos_as_index = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size
-	for i in _shape[0].size():
-		for j in _shape.size():
-			if _shape[i][j] != 0 and Global.grid[pos_as_index.y + i][pos_as_index.x + j] != 0:
+	for x in _shape[0].size():
+		for y in _shape.size():
+			if _shape[y][x] != 0 and Global.grid[pos_as_index.y + y][pos_as_index.x + x] != 0:
 				return true
 	return false
 
@@ -71,6 +79,6 @@ func on_grid() -> bool:
 
 func place_on_grid() -> void:
 	var pos_as_index = (Vector2i(position) - Global.origin) / Global.osechi_size
-	for i in _shape[0].size():
-		for j in _shape.size():
-			Global.grid[pos_as_index.y + i][pos_as_index.x + j] = _shape[i][j]
+	for x in _shape[0].size():
+		for y in _shape.size():
+			Global.grid[pos_as_index.y + y][pos_as_index.x + x] = _shape[y][x]

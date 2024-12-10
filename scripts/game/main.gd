@@ -76,14 +76,14 @@ func can_place(osechi) -> bool:
 
 func next_to_osechi() -> int:
 	var combo = 0
-	var pos_on_grid_modded = (_placed_osechi - Global.origin) / Global.osechi_size
+	var pos_as_index = (_placed_osechi - Global.origin) / Global.osechi_size
 	var shape = Global.osechi_shape[_placed_id]
 	# osechiの角の座標
 	var osechi = {
-		"left_top": pos_on_grid_modded,
-		"right_top": Vector2i(pos_on_grid_modded.x + shape[0].size(), pos_on_grid_modded.y),
-		"left_bottom": Vector2i(pos_on_grid_modded.x, pos_on_grid_modded.y + shape.size()),
-		"right_bottom": pos_on_grid_modded + Vector2i(shape[0].size(), shape.size())
+		"left_top": pos_as_index,
+		"right_top": Vector2i(pos_as_index.x + shape[0].size(), pos_as_index.y),
+		"left_bottom": Vector2i(pos_as_index.x, pos_as_index.y + shape.size()),
+		"right_bottom": pos_as_index + Vector2i(shape[0].size(), shape.size())
 	}
 	# 判定範囲の座標
 	var judge = {

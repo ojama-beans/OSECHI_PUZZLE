@@ -41,10 +41,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			_on_grid = true
 
 func overlap(snapped_pos: Vector2) -> bool:
-	var pos_on_grid_modded = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size
+	var pos_as_index = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size
 	for i in _shape[0].size():
 		for j in _shape.size():
-			if _shape[i][j] != 0 and Global.grid[pos_on_grid_modded.y + i][pos_on_grid_modded.x + j] != 0:
+			if _shape[i][j] != 0 and Global.grid[pos_as_index.y + i][pos_as_index.x + j] != 0:
 				return true
 	return false
 
@@ -70,7 +70,7 @@ func on_grid() -> bool:
 			(-out_length <= pos_on_grid.y and pos_on_grid.y <= grid_end + out_length))
 
 func place_on_grid() -> void:
-	var pos_on_grid_modded = (Vector2i(position) - Global.origin) / Global.osechi_size
+	var pos_as_index = (Vector2i(position) - Global.origin) / Global.osechi_size
 	for i in _shape[0].size():
 		for j in _shape.size():
-			Global.grid[pos_on_grid_modded.y + i][pos_on_grid_modded.x + j] = _shape[i][j]
+			Global.grid[pos_as_index.y + i][pos_as_index.x + j] = _shape[i][j]

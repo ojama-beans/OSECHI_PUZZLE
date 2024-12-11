@@ -6,6 +6,7 @@ extends Node2D
 # Timerノードをロード
 @onready var timer_node = $Timer
 
+# concavepolygonのひな型
 const GeneratedOsechi = preload("res://scripts/data_structure/generated_osechi.gd")
 
 # 動的生成されたosechiノードの参照リスト
@@ -50,8 +51,7 @@ func _on_placed_osechi(placed: Vector2i, id: Node) -> void:
 	_grid_changed = true
 	_placed_osechi = placed
 	_placed_id = id
-	var hoge = _osechies.filter(func(osechi): return osechi["node"] == id)
-	hoge[0]["on_grid"] = true
+	_osechies.filter(func(osechi): return osechi["node"] == id)[0]["on_grid"] = true
 	var combo = next_to_osechi()
 	if combo:
 		SignalManager.combo_occurred.emit(combo)
@@ -62,7 +62,7 @@ func generate_osechi() -> void:
 		var osechi_id = get_random_int(Global.osechi_num - 1)
 		var osechi = osechi_scenes[osechi_id].instantiate()
 		add_child(osechi)
-		osechi.connect("placed_osechi", Callable(self, "_on_placed_osechi"))
+		osechi.placed_osechi.connect(_on_placed_osechi)
 		var osechi_status = {
 			"node": osechi,
 			"on_grid": false
@@ -77,12 +77,12 @@ func can_place(osechi) -> bool:
 	var grid_cols = Global.grid[0].size()
 	var osechi_rows = osechi.size()
 	var osechi_cols = osechi[0].size()
-	for i in range(grid_rows - osechi_rows + 1):
-		for j in range(grid_cols - osechi_cols + 1):
+	for i in range(grid_cols - osechi_cols + 1):
+		for j in range(grid_rows - osechi_rows + 1):
 			var can_place_here = true
-			for x in range(osechi_rows):
-				for y in range(osechi_cols):
-					if Global.grid[i + x][j + y] != 0 and osechi[x][y] != 0:
+			for x in range(osechi_cols):
+				for y in range(osechi_rows):
+					if Global.grid[i + y][j + x] != 0 and osechi[y][x] != 0:
 						can_place_here = false
 						break
 				if not can_place_here:
@@ -95,21 +95,35 @@ func next_to_osechi() -> int:
 	var combo = 0
 	var placed_osechi = _osechies.filter(func(osechi): return osechi["node"] == _placed_id)[0]["node"]
 	var placed_name = placed_osechi.find_child("Osechi_?").name
-	var placed_n = int(placed_name.split("_")[1])
-	var placed_shape = placed_osechi.find_child("Collision_Osechi_?").shape
-	var placed_transform = placed_osechi.find_child("Collision_Osechi_?").global_transform
+	var placed_type = int(placed_name.split("_")[1])
+	var placed_osechies = placed_osechi.find_children("Collision_Osechi_?*")
+	var placed_shapes = []
+	var placed_transforms = []
+	for osechi_node in placed_osechies:
+		placed_shapes.append(osechi_node.shape)
+	for osechi_node in placed_osechies:
+		placed_transforms.append(osechi_node.global_transform)
 
 	for osechi_status in _osechies:
 		var osechi = osechi_status["node"]
 		if osechi == placed_osechi:
 			continue
-		var osechi_shape = osechi.find_child("Collision_Osechi_?").shape
-		var osechi_transform = osechi.find_child("Collision_Osechi_?").global_transform
-		if placed_shape.collide(placed_transform, osechi_shape, osechi_transform):
+		var osechies = osechi.find_children("Collision_Osechi_?*")
+		var osechi_shapes = []
+		var osechi_transforms = []
+		for osechi_node in osechies:
+			osechi_shapes.append(osechi_node.shape)
+		for osechi_node in osechies:
+			osechi_transforms.append(osechi_node.global_transform)
+		var collision = false
+		for i in range(placed_shapes.size()):
+			for j in range(osechi_shapes.size()):
+				if placed_shapes[i].collide(placed_transforms[i], osechi_shapes[j], osechi_transforms[j]):
+					collision = true
+		if collision:
 			var name = osechi.find_child("Osechi_?").name
 			var osechi_type = int(name.split("_")[1])
 			combo |= 2**(osechi_type - 1)
 	if combo:
-		combo |= placed_n
-	print(combo)
+		combo |= 2**(placed_type - 1)
 	return combo

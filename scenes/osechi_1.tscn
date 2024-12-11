@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cubyopn3vpxbp"]
+[gd_scene load_steps=4 format=3 uid="uid://cubyopn3vpxbp"]
 
 [ext_resource type="Script" path="res://scripts/osechi/osechi.gd" id="1_ei015"]
 [ext_resource type="Texture2D" uid="uid://b7gt6qi8ngtwi" path="res://assets/sprites/osechi/osechi_1.png" id="1_qcjwp"]
+
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_shlgd"]
 
 [node name="Osechi_1" type="Area2D"]
 script = ExtResource("1_ei015")
@@ -11,5 +13,18 @@ position = Vector2(64, 64)
 texture = ExtResource("1_qcjwp")
 
 [node name="Collision_Osechi_1" type="CollisionShape2D" parent="."]
+shape = SubResource("ConcavePolygonShape2D_shlgd")
+
+[node name="Collision_Osechi_2" type="CollisionShape2D" parent="."]
+position = Vector2(64, 0)
+shape = SubResource("ConcavePolygonShape2D_shlgd")
+
+[node name="Collision_Osechi_3" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+shape = SubResource("ConcavePolygonShape2D_shlgd")
+
+[node name="Collision_Osechi_4" type="CollisionShape2D" parent="."]
+position = Vector2(64, 64)
+shape = SubResource("ConcavePolygonShape2D_shlgd")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

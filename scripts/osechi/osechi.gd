@@ -31,7 +31,6 @@ func _process(delta: float) -> void:
 			set_process_input(false)
 		
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print("input")
 	if event is not InputEventMouseButton:
 		return
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -46,11 +45,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 func set_collision_shape() -> void:
 	var shape = ConvexPolygonShape2D.new()
-	print(_name)
-	print(Global.collision_shape[_name])
 	shape.set_points(Global.collision_shape[_name])
-	var collision_node = find_child("Collision_Osechi_?")
-	collision_node.shape = shape
+	var collision_nodes = find_children("Collision_Osechi_?*")
+	for collision_node in collision_nodes:
+		collision_node.shape = shape
 
 func overlap(snapped_pos: Vector2) -> bool:
 	var pos_as_index = (Vector2i(snapped_pos) - Global.origin) / Global.osechi_size

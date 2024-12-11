@@ -37,44 +37,43 @@ const timer = 60
 const score = 5
 
 var collision_diff = 4
-var x_ratio = osechi_shape["Osechi_1"][0].size() * osechi_size
-var y_ratio = osechi_shape["Osechi_1"].size() * osechi_size
+var x_osechi_1 = osechi_shape["Osechi_1"][0].size() * osechi_size
+var y_osechi_1 = osechi_shape["Osechi_1"].size() * osechi_size
+var x_osechi_2 = osechi_shape["Osechi_2"][0].size() * osechi_size
+var y_osechi_2 = osechi_shape["Osechi_2"].size() * osechi_size
 var collision_shape = {
 	# いくら
 	"Osechi_1": PackedVector2Array([
 		Vector2(0, 0),
 		Vector2(0, -collision_diff),
-		Vector2(x_ratio, -collision_diff),
-		Vector2(x_ratio, 0),
-		Vector2(x_ratio + collision_diff, 0), 
-		Vector2(x_ratio + collision_diff, y_ratio),
-		Vector2(x_ratio, y_ratio),
-		Vector2(x_ratio, y_ratio + collision_diff),
-		Vector2(0, y_ratio + collision_diff),
-		Vector2(0, y_ratio),
-		Vector2(-collision_diff, y_ratio),
+		Vector2(x_osechi_1, -collision_diff),
+		Vector2(x_osechi_1, 0),
+		Vector2(x_osechi_1 + collision_diff, 0), 
+		Vector2(x_osechi_1 + collision_diff, y_osechi_1),
+		Vector2(x_osechi_1, y_osechi_1),
+		Vector2(x_osechi_1, y_osechi_1 + collision_diff),
+		Vector2(0, y_osechi_1 + collision_diff),
+		Vector2(0, y_osechi_1),
+		Vector2(-collision_diff, y_osechi_1),
 		Vector2(-collision_diff, 0)
 	]),
 	# 数の子
 	"Osechi_2": PackedVector2Array([
 		Vector2(0, 0),
 		Vector2(0, -collision_diff),
-		Vector2(x_ratio, -collision_diff),
-		Vector2(x_ratio, 0),
-		Vector2(x_ratio + collision_diff, 0), 
-		Vector2(x_ratio + collision_diff, y_ratio),
-		Vector2(x_ratio, y_ratio),
-		Vector2(x_ratio, y_ratio + collision_diff),
-		Vector2(0, y_ratio + collision_diff),
-		Vector2(0, y_ratio),
-		Vector2(-collision_diff, y_ratio),
+		Vector2(x_osechi_2, -collision_diff),
+		Vector2(x_osechi_2, 0),
+		Vector2(x_osechi_2 + collision_diff, 0), 
+		Vector2(x_osechi_2 + collision_diff, y_osechi_2),
+		Vector2(x_osechi_2, y_osechi_2),
+		Vector2(x_osechi_2, y_osechi_2 + collision_diff),
+		Vector2(0, y_osechi_2 + collision_diff),
+		Vector2(0, y_osechi_2),
+		Vector2(-collision_diff, y_osechi_2),
 		Vector2(-collision_diff, 0)
 	]),
 	# だて巻き
 	"Osechi_3": PackedVector2Array([
-		Vector2(osechi_size - collision_diff, osechi_size - collision_diff),
-		Vector2(osechi_size - collision_diff,  0),
-		Vector2(osechi_size,  0),
 		Vector2(osechi_size,  -collision_diff),
 		Vector2(osechi_size * 2,  -collision_diff),
 		Vector2(osechi_size * 2,  0),
@@ -91,7 +90,10 @@ var collision_shape = {
 		Vector2(-collision_diff, osechi_size * 3),
 		Vector2(-collision_diff, osechi_size),
 		Vector2(0, osechi_size),
-		Vector2(0, osechi_size - collision_diff)
+		Vector2(0, osechi_size - collision_diff),
+		Vector2(osechi_size - collision_diff, osechi_size - collision_diff),
+		Vector2(osechi_size - collision_diff,  0),
+		Vector2(osechi_size,  0)
 	])
 }
 

@@ -82,7 +82,7 @@ func can_place(osechi) -> bool:
 			var can_place_here = true
 			for x in range(osechi_cols):
 				for y in range(osechi_rows):
-					if Global.grid[i + y][j + x] != 0 and osechi[y][x] != 0:
+					if Global.grid[j + y][i + x] != 0 and osechi[y][x] != 0:
 						can_place_here = false
 						break
 				if not can_place_here:

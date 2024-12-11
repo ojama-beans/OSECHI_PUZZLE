@@ -12,11 +12,7 @@ script = ExtResource("1_aurpy")
 position = Vector2(64, 32)
 texture = ExtResource("2_7l2uu")
 
-[node name="Collision_Osechi_2-1" type="CollisionShape2D" parent="."]
-shape = SubResource("ConcavePolygonShape2D_crn4d")
-
-[node name="Collision_Osechi_2-2" type="CollisionShape2D" parent="."]
-position = Vector2(64, 0)
+[node name="Collision_Osechi_2" type="CollisionShape2D" parent="."]
 shape = SubResource("ConcavePolygonShape2D_crn4d")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

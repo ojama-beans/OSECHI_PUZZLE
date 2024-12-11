@@ -19,15 +19,7 @@ position = Vector2(0, 64)
 shape = SubResource("ConcavePolygonShape2D_mlbel")
 
 [node name="Collision_Osechi_3-2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 128)
-shape = SubResource("ConcavePolygonShape2D_khtej")
-
-[node name="Collision_Osechi_3-3" type="CollisionShape2D" parent="."]
 position = Vector2(64, 0)
-shape = SubResource("ConcavePolygonShape2D_mlbel")
-
-[node name="Collision_Osechi_3-4" type="CollisionShape2D" parent="."]
-position = Vector2(64, 64)
-shape = SubResource("ConcavePolygonShape2D_mlbel")
+shape = SubResource("ConcavePolygonShape2D_khtej")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

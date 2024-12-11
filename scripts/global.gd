@@ -36,23 +36,26 @@ var origin = Vector2i.ZERO
 const timer = 60
 const score = 5
 
-var outer = 4
-var inner = 8
-var collision_shape = PackedVector2Array([
-	Vector2(inner, inner),
-	Vector2(inner, -outer),
-	Vector2(osechi_size - inner, -outer),
-	Vector2(osechi_size - inner, inner),
-	Vector2(osechi_size + outer, inner),
-	Vector2(osechi_size + outer, osechi_size - inner),
-	Vector2(osechi_size - inner, osechi_size - inner),
-	Vector2(osechi_size - inner, osechi_size + outer),
-	Vector2(inner, osechi_size + outer),
-	Vector2(inner, osechi_size - inner),
-	Vector2(-outer, osechi_size - inner),
-	Vector2(-outer, inner)
-])
+var collision_diff = 4
 
 func _ready() -> void:
 	var screen_size = get_viewport().get_visible_rect().size
 	origin = Vector2i((screen_size.x - grid_size) / 2, (screen_size.y - grid_size) / 2)
+
+func collision_shape(osechi_type: String) -> PackedVector2Array:
+	var x_osechi = osechi_shape[osechi_type][0].filter(func(x): return x != 0).size() * osechi_size
+	var y_osechi = osechi_shape[osechi_type].filter(func(array): return array[0] != 0).size() * osechi_size
+	return PackedVector2Array([
+		Vector2(0, 0),
+		Vector2(0, -collision_diff),
+		Vector2(x_osechi, -collision_diff),
+		Vector2(x_osechi, 0),
+		Vector2(x_osechi + collision_diff, 0), 
+		Vector2(x_osechi + collision_diff, y_osechi),
+		Vector2(x_osechi, y_osechi),
+		Vector2(x_osechi, y_osechi + collision_diff),
+		Vector2(0, y_osechi + collision_diff),
+		Vector2(0, y_osechi),
+		Vector2(-collision_diff, y_osechi),
+		Vector2(-collision_diff, 0)
+	])

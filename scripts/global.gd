@@ -36,21 +36,21 @@ var origin = Vector2i.ZERO
 const timer = 60
 const score = 5
 
-var collision = 8
-var non_overlap_length = 4
+var outer = 4
+var inner = 8
 var collision_shape = PackedVector2Array([
-	Vector2(overlap_length, -overlap_length),
-	Vector2(osechi_size - overlap_length, -overlap_length),
-	Vector2(osechi_size - overlap_length, overlap_length),
-	Vector2(osechi_size + overlap_length, overlap_length),
-	Vector2(osechi_size + overlap_length, osechi_size - overlap_length),
-	Vector2(osechi_size - overlap_length, osechi_size - overlap_length),
-	Vector2(osechi_size - overlap_length, osechi_size + overlap_length),
-	Vector2(overlap_length, osechi_size + overlap_length),
-	Vector2(overlap_length, osechi_size - overlap_length),
-	Vector2(-overlap_length, osechi_size - overlap_length),
-	Vector2(-overlap_length, overlap_length),
-	Vector2(overlap_length, overlap_length)
+	Vector2(inner, inner),
+	Vector2(inner, -outer),
+	Vector2(osechi_size - inner, -outer),
+	Vector2(osechi_size - inner, inner),
+	Vector2(osechi_size + outer, inner),
+	Vector2(osechi_size + outer, osechi_size - inner),
+	Vector2(osechi_size - inner, osechi_size - inner),
+	Vector2(osechi_size - inner, osechi_size + outer),
+	Vector2(inner, osechi_size + outer),
+	Vector2(inner, osechi_size - inner),
+	Vector2(-outer, osechi_size - inner),
+	Vector2(-outer, inner)
 ])
 
 func _ready() -> void:

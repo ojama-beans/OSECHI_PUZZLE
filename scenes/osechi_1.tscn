@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cubyopn3vpxbp"]
 
 [ext_resource type="Script" path="res://scripts/osechi/osechi.gd" id="1_ei015"]
-[ext_resource type="Texture2D" uid="uid://b7gt6qi8ngtwi" path="res://assets/sprites/osechi/osechi_1.png" id="1_qcjwp"]
+[ext_resource type="Texture2D" uid="uid://jbkpnfg6gncl" path="res://assets/sprites/osechi/osechi_1.png" id="1_qcjwp"]
 
 [sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_shlgd"]
 

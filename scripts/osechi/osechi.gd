@@ -76,9 +76,10 @@ func on_grid() -> bool:
 	var pos_on_grid = position - Vector2(Global.origin)
 	var grid_end = Global.grid_size - _shape[0].size()
 	var out_length = Global.osechi_size / 3
+	var osechi_shape = Vector2(Global.osechi_shape[_name][0].size(), Global.osechi_shape[_name].size())
 	var on_grid_flag = false
-	if ((-out_length <= pos_on_grid.x and pos_on_grid.x <= grid_end + out_length) and
-		(-out_length <= pos_on_grid.y and pos_on_grid.y <= grid_end + out_length)):
+	if ((-out_length <= pos_on_grid.x and pos_on_grid.x + osechi_shape.x * Global.osechi_size <= grid_end + out_length) and
+		(-out_length <= pos_on_grid.y and pos_on_grid.y + osechi_shape.y * Global.osechi_size <= grid_end + out_length)):
 		on_grid_flag = true
 		_pos_where_grid = position
 	return on_grid_flag

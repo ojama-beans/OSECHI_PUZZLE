@@ -126,4 +126,5 @@ func next_to_osechi() -> int:
 			combo |= 2**(osechi_type - 1)
 	if combo:
 		combo |= 2**(placed_type - 1)
+	print(combo)
 	return combo

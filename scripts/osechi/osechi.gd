@@ -45,7 +45,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 func set_collision_shape() -> void:
 	var shape = ConvexPolygonShape2D.new()
-	shape.set_points(Global.collision_shape[_name])
+	shape.set_points(Global.collision_shape)
 	var collision_nodes = find_children("Collision_Osechi_?*")
 	for collision_node in collision_nodes:
 		collision_node.shape = shape

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jbkpnfg6gncl"
-path="res://.godot/imported/osechi_1.png-b466fb1e46f3b1939c38cb0f0309de47.ctex"
+uid="uid://cj48smw4yqkeh"
+path="res://.godot/imported/osechi_2.png-f671d9c9464cbf51f756d7fe72140191.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/osechi/osechi_1.png"
-dest_files=["res://.godot/imported/osechi_1.png-b466fb1e46f3b1939c38cb0f0309de47.ctex"]
+source_file="res://assets/sprites/osechi/osechi_2.png"
+dest_files=["res://.godot/imported/osechi_2.png-f671d9c9464cbf51f756d7fe72140191.ctex"]
 
 [params]
 

@@ -61,14 +61,13 @@ func overlap(snapped_pos: Vector2) -> bool:
 func snap_to_grid() -> Vector2:
 	var snapped_pos = Vector2.ZERO
 	for axis in ["x", "y"]:
-		var mouse_pos = get_viewport().get_mouse_position()[axis] - _diff[axis]
-		var pos = position[axis] - Global.origin[axis]
-		var modded_pos = fmod(pos, Global.osechi_size)
+		var pos_on_grid = position[axis] - Global.origin[axis]
+		var modded_pos = fmod(pos_on_grid, Global.osechi_size)
 		var ratio_on_grid
 		if modded_pos < (Global.osechi_size / 2):
-			ratio_on_grid = int(mouse_pos - Global.origin[axis]) / Global.osechi_size
+			ratio_on_grid = int(pos_on_grid - Global.origin[axis]) / Global.osechi_size
 		else:
-			ratio_on_grid = (int(mouse_pos - Global.origin[axis]) / Global.osechi_size) + 1
+			ratio_on_grid = (int(pos_on_grid - Global.origin[axis]) / Global.osechi_size) + 1
 		snapped_pos[axis] = ratio_on_grid * Global.osechi_size + Global.origin[axis]
 	return snapped_pos
 

@@ -1,6 +1,7 @@
 extends Node
 
-const osechi_num = 3
+# 有効化するosechiの数
+const osechi_num = 5
 const osechi_size = 64
 const can_place_osechi = 1
 var grid = [
@@ -29,6 +30,16 @@ const osechi_shape = {
 		[2**2, 2**2],
 		[2**2,    0]
 	],
+	# 昆布巻き
+	"Osechi_4": [
+		[2**3], 
+		[2**3]
+	],
+	# 海老
+	"Osechi_5": [
+		[2**4, 2**4],
+		[0,    2**4]
+	]
 }
 
 var grid_size = osechi_size * grid.size()
@@ -36,13 +47,8 @@ var origin = Vector2i.ZERO
 const timer = 10
 const score = 5
 const combo_map = {
-	1: "None",
-	2: "None",
-	3: "None",
-	4: "None",
-	5: "None",
-	6: "None",
 	7: "sison_hanei",
+	24: "kenko_tyoju",
 }
 
 var collision_diff = 4
@@ -54,6 +60,10 @@ func _ready() -> void:
 func collision_shape(osechi_type: String) -> PackedVector2Array:
 	var x_osechi = osechi_shape[osechi_type][0].filter(func(x): return x != 0).size() * osechi_size
 	var y_osechi = osechi_shape[osechi_type].filter(func(array): return array[0] != 0).size() * osechi_size
+	# osechi_5 はまだ一般化していない
+	if osechi_type == "Osechi_5":
+		x_osechi = 1 * osechi_size
+		y_osechi = 1 * osechi_size
 	return PackedVector2Array([
 		Vector2(0, 0),
 		Vector2(0, -collision_diff),

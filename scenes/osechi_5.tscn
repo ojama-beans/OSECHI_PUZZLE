@@ -12,7 +12,15 @@ script = ExtResource("1_ur20w")
 position = Vector2(64, 64)
 texture = ExtResource("2_cclpg")
 
-[node name="Collision_Osechi_5" type="CollisionShape2D" parent="."]
+[node name="Collision_Osechi_5-1" type="CollisionShape2D" parent="."]
+shape = SubResource("ConcavePolygonShape2D_shlgd")
+
+[node name="Collision_Osechi_5-2" type="CollisionShape2D" parent="."]
+position = Vector2(64, 0)
+shape = SubResource("ConcavePolygonShape2D_shlgd")
+
+[node name="Collision_Osechi_5-3" type="CollisionShape2D" parent="."]
+position = Vector2(64, 64)
 shape = SubResource("ConcavePolygonShape2D_shlgd")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

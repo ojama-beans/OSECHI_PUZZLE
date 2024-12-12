@@ -23,6 +23,6 @@ func _on_video_finished() -> void:
 	SignalManager.combo_ended.emit()
 
 func combo_effct(combo: int) -> void:
-	if Global.combo_map[combo] == "sison_hanei":
+	if Global.combo_map.get(combo, "None") == "sison_hanei":
 		video_stream_player_node.finished.connect(_on_video_finished)
 		video_stream_player_node.play()

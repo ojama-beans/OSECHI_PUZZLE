@@ -35,6 +35,15 @@ var grid_size = osechi_size * grid.size()
 var origin = Vector2i.ZERO
 const timer = 10
 const score = 5
+const combo_map = {
+	1: "None",
+	2: "None",
+	3: "None",
+	4: "None",
+	5: "None",
+	6: "None",
+	7: "sison_hanei",
+}
 
 var collision_diff = 4
 

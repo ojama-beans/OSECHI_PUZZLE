@@ -3,9 +3,6 @@ extends Node2D
 # osechiノードのシーンをロード
 @onready var osechi_scenes = []
 
-# Timerノードをロード
-@onready var timer_node = $Timer
-
 # concavepolygonのひな型
 const GeneratedOsechi = preload("res://scripts/data_structure/generated_osechi.gd")
 
@@ -29,7 +26,6 @@ func _ready() -> void:
 		var path = "res://scenes/osechi_" + str(i + 1) + ".tscn"
 		osechi_scenes.append(load(path))
 	generate_osechi()
-	timer_node.start(Global.timer)
 
 func _process(delta: float) -> void:
 	if _grid_changed:

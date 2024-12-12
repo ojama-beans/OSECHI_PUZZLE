@@ -14,16 +14,16 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_combo_occurred(combo: int) -> void:
+	
 	canvas_layer_node.visible = true
 	Score.combo()
 	combo_effct(combo)
 
 func _on_video_finished() -> void:
-	timer_node.paused = false
 	canvas_layer_node.visible = false
+	SignalManager.combo_ended.emit()
 
 func combo_effct(combo: int) -> void:
-	timer_node.paused = true
 	# combo id に応じて再生するファイルを決める
 	if combo == (2**0 | 2**1 | 2**2):
 		video_stream_player_node.finished.connect(_on_video_finished)

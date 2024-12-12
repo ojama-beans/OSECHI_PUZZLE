@@ -1,13 +1,24 @@
 extends Timer
 
-# Called when the node enters the scene tree for the first time.
+@onready var show_timer = $"ShowTimer"
+
 func _ready() -> void:
 	one_shot = true
+	start(Global.timer)
 	timeout.connect(_timeout)
+	SignalManager.combo_occurred.connect(_on_combo_occurred)
+	SignalManager.combo_ended.connect(_on_combo_ended)
+	show_timer.text = str(Global.timer)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	show_timer.text = str(time_left)
 
 func _timeout() -> void:
 	SignalManager.time_over.emit()
+
+func _on_combo_occurred(combo: int) -> void:
+	if Global.combo_map[combo] != "None":
+		paused = true
+
+func _on_combo_ended() -> void:
+	paused = false

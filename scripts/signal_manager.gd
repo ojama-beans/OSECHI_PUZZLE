@@ -3,6 +3,7 @@ extends Node
 signal time_over()
 signal cannot_place_osechi()
 signal combo_occurred(combo: int)
+signal combo_ended()
 signal on_game_complete()
 
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://p05o4t2p5knj"]
+[gd_scene load_steps=9 format=3 uid="uid://p05o4t2p5knj"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_srota"]
 [ext_resource type="Texture2D" uid="uid://b0bk50s0yqfwv" path="res://assets/sprites/game/GameBG.png" id="2_lngu5"]
@@ -6,9 +6,8 @@
 [ext_resource type="Script" path="res://scripts/timer/main.gd" id="4_iug3y"]
 [ext_resource type="Script" path="res://scripts/combo/main.gd" id="5_5ybyh"]
 [ext_resource type="PackedScene" uid="uid://bw116swmuwx8h" path="res://scenes/end.tscn" id="5_aigqq"]
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_wn4m0"]
-file = "res://assets/video/shison_hanei.ogv"
+[ext_resource type="VideoStream" path="res://assets/video/shison_hanei.ogv" id="6_i8c80"]
+[ext_resource type="Script" path="res://scripts/label/show_score.gd" id="8_si0pb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_srota")
@@ -23,6 +22,12 @@ texture = ExtResource("3_25ofj")
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("4_iug3y")
 
+[node name="ShowTimer" type="Label" parent="Timer"]
+offset_left = 373.0
+offset_top = 150.0
+offset_right = 618.0
+offset_bottom = 350.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Combo" type="Node2D" parent="CanvasLayer"]
@@ -32,10 +37,20 @@ script = ExtResource("5_5ybyh")
 offset_top = 440.0
 offset_right = 720.0
 offset_bottom = 840.0
-stream = SubResource("VideoStreamTheora_wn4m0")
+stream = ExtResource("6_i8c80")
+volume_db = -3.51
 metadata/_edit_use_anchors_ = true
+
+[node name="ShowScore" type="Label" parent="."]
+offset_left = 221.0
+offset_top = 251.0
+offset_right = 503.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0.498039, 0, 0, 1)
+script = ExtResource("8_si0pb")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="End" parent="CanvasLayer2" instance=ExtResource("5_aigqq")]
+visible = false

@@ -39,5 +39,26 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "END"
+size_flags_vertical = 0
+text = "結果発表
+
+
+獲得スコア
+
+最高スコア
+"
+label_settings = SubResource("LabelSettings_5b7qr")
+justification_flags = 162
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 527.0
+offset_right = 567.0
+offset_bottom = 795.0
+size_flags_vertical = 0
+text = "<>P
+
+<>p
+"
 label_settings = SubResource("LabelSettings_5b7qr")

@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_combo_occurred(combo: int) -> void:
-	
 	canvas_layer_node.visible = true
 	Score.combo()
 	combo_effct(combo)
@@ -24,7 +23,6 @@ func _on_video_finished() -> void:
 	SignalManager.combo_ended.emit()
 
 func combo_effct(combo: int) -> void:
-	# combo id に応じて再生するファイルを決める
-	if combo == (2**0 | 2**1 | 2**2):
+	if Global.combo_map[combo] == "sison_hanei":
 		video_stream_player_node.finished.connect(_on_video_finished)
 		video_stream_player_node.play()

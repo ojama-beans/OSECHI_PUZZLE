@@ -25,4 +25,3 @@ func _on_start_button_pressed() -> void:
 		tree.change_scene_to_file("res://scenes/game.tscn")
 	else:
 		print("Error: get_tree() returned null.")
-

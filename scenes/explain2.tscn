@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d31775v2sbynq"]
+[gd_scene load_steps=5 format=3 uid="uid://d31775v2sbynq"]
 
 [ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_g6rno"]
 [ext_resource type="Script" path="res://scripts/explain/explain_2.gd" id="1_jykfx"]
 [ext_resource type="Texture2D" uid="uid://d0omaaddy0r6d" path="res://assets/sprites/explain/SamplePhoto.jpg" id="3_2x4ot"]
+[ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="4_ttcfa"]
 
 [node name="Explain" type="Control"]
 layout_mode = 3
@@ -22,7 +23,7 @@ layout_mode = 1
 offset_left = 90.0
 offset_right = 630.0
 offset_bottom = 1050.0
-color = Color(0.977937, 0.977937, 0.977937, 1)
+color = Color(0.976471, 0.976471, 0.976471, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ColorRect"]
 editor_description = "ads"
@@ -30,25 +31,32 @@ position = Vector2(268, 404)
 texture = ExtResource("3_2x4ot")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
-modulate = Color(0.464667, 0.0590557, 0.102808, 1)
+modulate = Color(0.543063, 0.399647, 0.197331, 1)
 self_modulate = Color(0.891459, 0.650957, 0.850587, 1)
 layout_mode = 0
-offset_left = 25.0
-offset_top = 825.0
-offset_right = 521.0
-offset_bottom = 994.0
+offset_left = 14.0
+offset_top = 824.0
+offset_right = 515.0
+offset_bottom = 1040.0
+theme_override_fonts/normal_font = ExtResource("4_ttcfa")
+theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
-text = "あるおせちの組み合わせを隣り合わせて詰めるとコンビネーションが発動するよ
-いろんな組み合わせを試してみよう！"
-fit_content = true
-tab_size = 24
+text = "あるおせちの組み合わせを隣り合わせて詰めると...
+[wave amp=50 freq=-5]コンビネーション[/wave]が発動するよいろんな組み合わせを試してみよう！"
+scroll_active = false
+tab_size = 1
+language = "ja"
 
 [node name="back_Button" type="Button" parent="."]
 layout_mode = 1
 offset_left = 204.0
-offset_top = 1081.0
+offset_top = 1080.0
 offset_right = 538.0
-offset_bottom = 1180.0
+offset_bottom = 1179.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_ttcfa")
+theme_override_font_sizes/font_size = 50
 text = "ホームに戻る"
 
 [node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]

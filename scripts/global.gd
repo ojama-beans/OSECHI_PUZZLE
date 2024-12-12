@@ -33,7 +33,7 @@ const osechi_shape = {
 
 var grid_size = osechi_size * grid.size()
 var origin = Vector2i.ZERO
-const timer = 60
+const timer = 10
 const score = 5
 
 var collision_diff = 4

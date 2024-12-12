@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cutlf54n6psvt"]
+[gd_scene load_steps=3 format=3 uid="uid://cutlf54n6psvt"]
 
 [ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
 [ext_resource type="Script" path="res://scripts/home/home.gd" id="1_stf8m"]
-[ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="3_m0ntm"]
-[ext_resource type="Script" path="res://scripts/home/title.gd" id="4_d8rsm"]
-[ext_resource type="VideoStream" path="res://assets/video/home.ogv" id="5_6ia5q"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -21,41 +18,20 @@ texture = ExtResource("1_en7j5")
 [node name="explan_Button" type="Button" parent="."]
 layout_mode = 1
 offset_left = 204.0
-offset_top = 1080.0
+offset_top = 936.0
 offset_right = 538.0
-offset_bottom = 1180.0
-theme_override_fonts/font = ExtResource("3_m0ntm")
-theme_override_font_sizes/font_size = 50
+offset_bottom = 1036.0
 text = "ゲーム説明"
 
 [node name="start_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 900.0
-offset_right = 571.0
-offset_bottom = 1019.76
-theme_override_fonts/font = ExtResource("3_m0ntm")
-theme_override_font_sizes/font_size = 50
+offset_left = 204.0
+offset_top = 1081.0
+offset_right = 538.0
+offset_bottom = 1180.0
 text = "ゲームスタート"
 
 [node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(360, 600)
-transform = Transform2D(1, 0, 0, 1, 360, 600)
-
-[node name="Title" type="Node2D" parent="CanvasLayer"]
-script = ExtResource("4_d8rsm")
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Title"]
-offset_left = -360.0
-offset_top = -600.0
-offset_right = 360.0
-offset_bottom = 120.0
-scale = Vector2(1, 1.2)
-size_flags_horizontal = 4
-stream = ExtResource("5_6ia5q")
-loop = true
 
 [connection signal="pressed" from="explan_Button" to="." method="_on_explan_button_pressed"]
 [connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]

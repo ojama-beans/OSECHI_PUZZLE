@@ -22,6 +22,7 @@ var _placed_osechi = Vector2i.ZERO
 var _placed_id = ""
 
 func _ready() -> void:
+	reset_global_value()
 	for i in range(Global.osechi_num):
 		var path = "res://scenes/osechi_" + str(i + 1) + ".tscn"
 		osechi_scenes.append(load(path))
@@ -56,6 +57,10 @@ func _on_placed_osechi(placed: Vector2i, id: Node) -> void:
 
 func _on_game_complete() -> void:
 	get_tree().change_scene_to_file("res://scenes/end.tscn")
+
+func reset_global_value() -> void:
+	Global.reset()
+	Score.reset()
 
 func generate_osechi() -> void:
 	for i in range(Global.can_place_osechi):

@@ -68,3 +68,8 @@ func collision_shape(osechi_type: String) -> PackedVector2Array:
 		Vector2(-collision_diff, y_osechi),
 		Vector2(-collision_diff, 0)
 	])
+
+func reset() -> void:
+	for i in range(grid.size()):
+		for j in range(grid[0].size()):
+			grid[i][j] = 0

@@ -26,6 +26,7 @@ func _ready() -> void:
 		var path = "res://scenes/osechi_" + str(i + 1) + ".tscn"
 		osechi_scenes.append(load(path))
 	generate_osechi()
+	SignalManager.on_game_complete.connect(_on_game_complete)
 
 func _process(delta: float) -> void:
 	if _grid_changed:
@@ -52,6 +53,9 @@ func _on_placed_osechi(placed: Vector2i, id: Node) -> void:
 	if combo:
 		SignalManager.combo_occurred.emit(combo)
 	Score.add()
+
+func _on_game_complete() -> void:
+	get_tree().change_scene_to_file("res://scenes/end.tscn")
 
 func generate_osechi() -> void:
 	for i in range(Global.can_place_osechi):

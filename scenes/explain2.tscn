@@ -14,8 +14,8 @@ script = ExtResource("1_jykfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 editor_description = "ads"
-position = Vector2(360, 649)
-scale = Vector2(0.291, 0.365)
+position = Vector2(360, 644.788)
+scale = Vector2(0.291, 0.3674)
 texture = ExtResource("1_g6rno")
 
 [node name="ColorRect" type="ColorRect" parent="."]

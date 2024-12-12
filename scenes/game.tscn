@@ -54,4 +54,3 @@ script = ExtResource("8_si0pb")
 layer = 2
 
 [node name="End" parent="CanvasLayer2" instance=ExtResource("5_aigqq")]
-visible = false

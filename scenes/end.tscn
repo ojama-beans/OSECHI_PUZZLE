@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw116swmuwx8h"]
+[gd_scene load_steps=5 format=3 uid="uid://bw116swmuwx8h"]
 
 [ext_resource type="Script" path="res://scripts/end/end.gd" id="1_mq8v0"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_ct2fx"]
+[ext_resource type="Script" path="res://scripts/end/last_score.gd" id="3_dwsii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b7qr"]
 font = ExtResource("2_ct2fx")
@@ -54,16 +55,25 @@ text = "結果発表
 label_settings = SubResource("LabelSettings_5b7qr")
 justification_flags = 162
 
+[node name="back_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 1080.0
+offset_right = 538.0
+offset_bottom = 1179.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_ct2fx")
+theme_override_font_sizes/font_size = 50
+text = "ホームに戻る"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 527.0
-offset_right = 567.0
-offset_bottom = 795.0
-size_flags_vertical = 0
-text = "<>P
-
-<>p
-"
+offset_left = 176.0
+offset_top = 543.0
+offset_right = 544.0
+offset_bottom = 624.0
 label_settings = SubResource("LabelSettings_5b7qr")
-justification_flags = 162
+script = ExtResource("3_dwsii")
+
+[connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

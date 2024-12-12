@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw116swmuwx8h"]
+[gd_scene load_steps=4 format=3 uid="uid://bw116swmuwx8h"]
 
 [ext_resource type="Script" path="res://scripts/end/end.gd" id="1_mq8v0"]
+[ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_ct2fx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b7qr"]
-font_size = 100
+font = ExtResource("2_ct2fx")
+font_size = 80
+font_color = Color(0.892858, 0.205873, 0.270918, 1)
+outline_size = 10
+outline_color = Color(1, 0.840811, 0.926054, 1)
+shadow_size = 11
 
 [node name="End" type="Control"]
 layout_mode = 3
@@ -25,19 +31,38 @@ color = Color(0, 0, 0, 0.392157)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 0.11
+offset_left = -200.0
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 917.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Label" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "END"
+size_flags_vertical = 0
+text = "結果発表
+
+
+獲得スコア
+
+最高スコア
+"
 label_settings = SubResource("LabelSettings_5b7qr")
+justification_flags = 162
+
+[node name="Label" type="Label" parent="."]
+offset_left = 160.0
+offset_top = 527.0
+offset_right = 567.0
+offset_bottom = 795.0
+size_flags_vertical = 0
+text = "<>P
+
+<>p
+"
+label_settings = SubResource("LabelSettings_5b7qr")
+justification_flags = 162

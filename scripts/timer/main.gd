@@ -1,14 +1,13 @@
 extends Timer
 
-@onready var show_timer = $"ShowTimer"
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	one_shot = true
 	timeout.connect(_timeout)
-	show_timer.text = "60"
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	show_timer.text = str(time_left)
+	pass
 
 func _timeout() -> void:
 	SignalManager.time_over.emit()

@@ -19,3 +19,7 @@ func combo() -> void:
 		ratio = 1.5
 	elif ratio == 1.5:
 		ratio = 2
+
+func reset() -> void:
+	score = 0
+	ratio = 1

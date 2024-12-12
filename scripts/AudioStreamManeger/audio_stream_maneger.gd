@@ -38,3 +38,4 @@ func stop_bgm() -> void:
             bgm_player.volume_db -= step
             await get_tree().create_timer(delay).timeout
         bgm_player.stop()  # BGMを停止
+        bgm_player.volume_db = -10  # 音量をリセット

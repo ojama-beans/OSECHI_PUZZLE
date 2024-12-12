@@ -8,10 +8,10 @@ func _ready() -> void:
 	timeout.connect(_timeout)
 	SignalManager.combo_occurred.connect(_on_combo_occurred)
 	SignalManager.combo_ended.connect(_on_combo_ended)
-	show_timer.text = str(Global.timer)
+	show_timer.text = str(int(Global.timer))
 
 func _process(delta: float) -> void:
-	show_timer.text = str(time_left)
+	show_timer.text = str(int(time_left))
 
 func _timeout() -> void:
 	SignalManager.time_over.emit()

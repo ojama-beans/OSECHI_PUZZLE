@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw116swmuwx8h"]
+[gd_scene load_steps=6 format=3 uid="uid://bw116swmuwx8h"]
 
+[ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
 [ext_resource type="Script" path="res://scripts/end/end.gd" id="1_mq8v0"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_ct2fx"]
 [ext_resource type="Script" path="res://scripts/end/last_score.gd" id="3_dwsii"]
@@ -21,16 +22,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mq8v0")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+[node name="HomeBg" type="Sprite2D" parent="."]
+position = Vector2(360, 640)
+scale = Vector2(0.291, 0.365)
+texture = ExtResource("1_en7j5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -42,7 +39,7 @@ offset_right = 200.0
 offset_bottom = 917.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="Background/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "結果発表
@@ -61,8 +58,6 @@ offset_left = 204.0
 offset_top = 1080.0
 offset_right = 538.0
 offset_bottom = 1179.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_ct2fx")
 theme_override_font_sizes/font_size = 50
 text = "ホームに戻る"
@@ -74,6 +69,7 @@ offset_top = 543.0
 offset_right = 544.0
 offset_bottom = 624.0
 label_settings = SubResource("LabelSettings_5b7qr")
+horizontal_alignment = 2
 script = ExtResource("3_dwsii")
 
 [connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

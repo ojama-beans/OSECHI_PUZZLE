@@ -44,7 +44,7 @@ const osechi_shape = {
 
 var grid_size = osechi_size * grid.size()
 var origin = Vector2i.ZERO
-const timer = 10
+const timer = 60
 const score = 5
 const combo_map = {
 	7: "sison_hanei",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://p05o4t2p5knj"]
+[gd_scene load_steps=11 format=3 uid="uid://p05o4t2p5knj"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_srota"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_ct2fx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/timer/main.gd" id="4_iug3y"]
 [ext_resource type="Script" path="res://scripts/combo/main.gd" id="5_5ybyh"]
 [ext_resource type="VideoStream" path="res://assets/video/shison_hanei.ogv" id="6_i8c80"]
+[ext_resource type="VideoStream" path="res://assets/video/kenko_tyoju.ogv" id="8_8oc0q"]
 [ext_resource type="Script" path="res://scripts/label/show_score.gd" id="8_si0pb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b7qr"]
@@ -26,6 +27,7 @@ texture = ExtResource("2_lngu5")
 
 [node name="Grid" type="Sprite2D" parent="Background"]
 texture = ExtResource("3_25ofj")
+offset = Vector2(0, 32)
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("4_iug3y")
@@ -45,7 +47,7 @@ horizontal_alignment = 2
 [node name="Combo" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("5_5ybyh")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Combo"]
+[node name="SisonHanei" type="VideoStreamPlayer" parent="CanvasLayer/Combo"]
 offset_top = 440.0
 offset_right = 720.0
 offset_bottom = 840.0
@@ -53,11 +55,19 @@ stream = ExtResource("6_i8c80")
 volume_db = -20.25
 metadata/_edit_use_anchors_ = true
 
+[node name="KenkoTyoju" type="VideoStreamPlayer" parent="CanvasLayer/Combo"]
+offset_top = 440.0
+offset_right = 720.0
+offset_bottom = 840.0
+stream = ExtResource("8_8oc0q")
+volume_db = -20.25
+metadata/_edit_use_anchors_ = true
+
 [node name="ShowScore" type="Label" parent="."]
 offset_left = 356.0
-offset_top = 900.0
+offset_top = 970.0
 offset_right = 620.0
-offset_bottom = 981.0
+offset_bottom = 1051.0
 theme_override_colors/font_color = Color(0.498039, 0, 0, 1)
 text = "00000
 "
@@ -75,8 +85,8 @@ label_settings = SubResource("LabelSettings_5b7qr")
 
 [node name="LabelScore" type="Label" parent="."]
 offset_left = 100.0
-offset_top = 900.0
+offset_top = 970.0
 offset_right = 340.0
-offset_bottom = 981.0
+offset_bottom = 1051.0
 text = "スコア"
 label_settings = SubResource("LabelSettings_5b7qr")

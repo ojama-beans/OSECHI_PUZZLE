@@ -2,6 +2,7 @@ extends Node
 
 var score = 0
 var ratio = 1
+var max_score = 0
 
 func _ready() -> void:
 	pass

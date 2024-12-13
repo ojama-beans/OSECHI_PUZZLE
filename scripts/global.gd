@@ -46,9 +46,9 @@ var grid_size = osechi_size * grid.size()
 var origin = Vector2i.ZERO
 const timer = 60
 const score = 5
-const combo_map = {
-	7: "sison_hanei",
-	24: "kenko_tyoju",
+enum combo_map {
+	SISON_HANEI = 7,
+	KENKO_TYOJU = 24
 }
 
 var collision_diff = 4
@@ -83,3 +83,12 @@ func reset() -> void:
 	for i in range(grid.size()):
 		for j in range(grid[0].size()):
 			grid[i][j] = 0
+
+func check_any_combo_map(value: int) -> bool:
+	for key in combo_map.keys():
+		if partial_match(value, combo_map[key]):
+			return true
+	return false
+
+func partial_match(value: int, enum_value: int) -> bool:
+	return (value & enum_value) == enum_value

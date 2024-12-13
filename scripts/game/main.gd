@@ -52,8 +52,7 @@ func _on_placed_osechi(placed: Vector2i, id: Node) -> void:
 	_osechies.filter(func(osechi): return osechi["node"] == id)[0]["on_grid"] = true
 	var combo = next_to_osechi()
 	if combo:
-		# SignalManager.combo_occurred.emit(combo)
-		pass
+		SignalManager.combo_occurred.emit(combo)
 	Score.add()
 
 func _on_game_complete() -> void:

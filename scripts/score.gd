@@ -1,8 +1,8 @@
 extends Node
 
-var score = 0
+var score := 0
 var ratio = 1
-var max_score = 0
+var max_score := 0
 
 func _ready() -> void:
 	pass
@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func add() -> void:
-	score += Global.score * ratio
+	score += ceil(Global.score * ratio)
 
 func combo() -> void:
 	if ratio == 1:

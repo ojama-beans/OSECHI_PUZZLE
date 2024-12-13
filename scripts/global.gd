@@ -1,7 +1,7 @@
 extends Node
 
 # 有効化するosechiの数
-const osechi_num = 5
+const osechi_num = 6
 const osechi_size = 64
 const can_place_osechi = 1
 var grid = [
@@ -39,6 +39,11 @@ const osechi_shape = {
 	"Osechi_5": [
 		[2**4, 2**4],
 		[0,    2**4]
+	],
+	# 黒豆
+	"Osechi_6": [
+		[2**5,    0],
+		[0,    2**5]
 	]
 }
 
@@ -48,7 +53,7 @@ const timer = 60
 const score = 5
 enum combo_map {
 	SISON_HANEI = 7,
-	KENKO_TYOJU = 24
+	KENKO_TYOJU = 56
 }
 
 var collision_diff = 4

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw116swmuwx8h"]
+[gd_scene load_steps=7 format=3 uid="uid://bw116swmuwx8h"]
 
 [ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_en7j5"]
 [ext_resource type="Script" path="res://scripts/end/end.gd" id="1_mq8v0"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_ct2fx"]
 [ext_resource type="Script" path="res://scripts/end/last_score.gd" id="3_dwsii"]
+[ext_resource type="Script" path="res://scripts/end/max_score.gd" id="5_yvn4o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b7qr"]
 font = ExtResource("2_ct2fx")
@@ -71,5 +72,15 @@ offset_bottom = 624.0
 label_settings = SubResource("LabelSettings_5b7qr")
 horizontal_alignment = 2
 script = ExtResource("3_dwsii")
+
+[node name="MaxScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 703.0
+offset_right = 544.0
+offset_bottom = 784.0
+label_settings = SubResource("LabelSettings_5b7qr")
+horizontal_alignment = 2
+script = ExtResource("5_yvn4o")
 
 [connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

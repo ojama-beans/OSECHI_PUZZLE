@@ -17,7 +17,7 @@ func _timeout() -> void:
 	SignalManager.time_over.emit()
 
 func _on_combo_occurred(combo: int) -> void:
-	if Global.combo_map.get(combo, "None") != "None":
+	if Global.check_any_combo_map(combo):
 		paused = true
 
 func _on_combo_ended() -> void:

@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 				_grid_changed = false
 			else:
 				SignalManager.cannot_place_osechi.emit()
+				set_process(false)
+				return
 	if _unplaced_osechi == 0:
 		generate_osechi()
 		_unplaced_osechi = Global.can_place_osechi

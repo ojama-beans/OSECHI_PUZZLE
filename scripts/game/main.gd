@@ -65,9 +65,13 @@ func reset_global_value() -> void:
 	Score.reset()
 
 func generate_osechi() -> void:
+	var window_size = get_viewport().get_visible_rect().size
+	var generate_positions = divide_window(window_size.x, Global.can_place_osechi)
 	for i in range(Global.can_place_osechi):
 		var osechi_id = get_random_int(Global.osechi_num - 1)
 		var osechi = osechi_scenes[osechi_id].instantiate()
+		var pos = Vector2(generate_positions[i], Global.origin.y / 3)
+		osechi.position = offset_to_center(pos, osechi)
 		add_child(osechi)
 		osechi.placed_osechi.connect(_on_placed_osechi)
 		var osechi_status = {
@@ -75,6 +79,23 @@ func generate_osechi() -> void:
 			"on_grid": false
 		}
 		_osechies.append(osechi_status)
+
+func divide_window(window_width, num_parts) -> Array:
+	var segments = num_parts + 1
+	var step = window_width / segments
+	var points = []
+	for i in range(1, segments):
+		points.append(step * i)
+	
+	return points
+
+func offset_to_center(pos: Vector2, osechi: Node) -> Vector2:
+	var name = osechi.find_child("Osechi_?").name
+	var shape = Global.osechi_shape[name]
+	var width = shape[0].size() * Global.osechi_size
+	var height = shape.size() * Global.osechi_size
+	var offset_pos = pos - Vector2(width / 2, height / 2)
+	return offset_pos
 
 func get_random_int(n: int) -> int:
 	return randi() % (n + 1)

@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func add() -> void:
-	score += ceil(Global.score * ratio)
+	score += Global.score * ratio
 
 func combo() -> void:
 	if ratio == 1:

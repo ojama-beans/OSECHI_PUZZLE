@@ -5,4 +5,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Score.score != 0:
-		text = str(Score.score)
+		text = str(ceil(Score.score))

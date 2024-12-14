@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/explain/explain_1.gd" id="1_jykfx"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="3_tmqrj"]
 [ext_resource type="Script" path="res://scripts/explain/sample_video.gd" id="4_1eumm"]
-[ext_resource type="VideoStream" path="res://assets/video/演出.ogv" id="5_ol6x7"]
+[ext_resource type="VideoStream" path="res://assets/video/ゲームプレイ.ogv" id="5_g06tk"]
 
 [node name="Explain" type="Control"]
 layout_mode = 3
@@ -46,14 +46,14 @@ tab_size = 40
 [node name="CanvasLayer" type="CanvasLayer" parent="ColorRect"]
 
 [node name="sample" type="Node2D" parent="ColorRect/CanvasLayer"]
-position = Vector2(178, 0)
+position = Vector2(130, 0)
 script = ExtResource("4_1eumm")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect/CanvasLayer/sample"]
 offset_right = 480.0
-offset_bottom = 1072.0
-scale = Vector2(0.75, 0.75)
-stream = ExtResource("5_ol6x7")
+offset_bottom = 1050.0
+scale = Vector2(0.95, 0.95)
+stream = ExtResource("5_g06tk")
 
 [node name="back_Button" type="Button" parent="."]
 layout_mode = 1

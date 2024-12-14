@@ -56,9 +56,9 @@ justification_flags = 162
 [node name="back_Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 1080.0
+offset_top = 900.0
 offset_right = 538.0
-offset_bottom = 1179.0
+offset_bottom = 999.0
 theme_override_fonts/font = ExtResource("2_ct2fx")
 theme_override_font_sizes/font_size = 50
 text = "ホームに戻る"
@@ -83,4 +83,15 @@ label_settings = SubResource("LabelSettings_5b7qr")
 horizontal_alignment = 2
 script = ExtResource("5_yvn4o")
 
+[node name="meaning_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 1057.0
+offset_right = 643.0
+offset_bottom = 1156.0
+theme_override_fonts/font = ExtResource("2_ct2fx")
+theme_override_font_sizes/font_size = 50
+text = "おせちに込められた意味"
+
 [connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="meaning_Button" to="." method="_on_meaning_button_pressed"]

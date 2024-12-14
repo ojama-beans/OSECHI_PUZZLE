@@ -21,6 +21,9 @@ var _placed_osechi = Vector2i.ZERO
 # 置かれたosechiのID
 var _placed_id = ""
 
+var _still_can_place = false
+var _cannot_place = false
+
 func _ready() -> void:
 	reset_global_value()
 	for i in range(Global.osechi_num):
@@ -37,10 +40,16 @@ func _process(delta: float) -> void:
 			var name = osechi["node"].find_child("Osechi_?").name
 			if can_place(Global.osechi_shape[name]):
 				_grid_changed = false
+				_still_can_place = true
 			else:
+				_cannot_place = true
+			if (not _still_can_place) and _cannot_place:
 				SignalManager.cannot_place_osechi.emit()
 				set_process(false)
 				return
+			else:
+				_still_can_place = false
+				_cannot_place = false
 	if _unplaced_osechi == 0:
 		generate_osechi()
 		_unplaced_osechi = Global.can_place_osechi

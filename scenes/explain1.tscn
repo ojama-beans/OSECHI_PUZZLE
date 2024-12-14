@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dycp1fg563ogl"]
+[gd_scene load_steps=6 format=3 uid="uid://dycp1fg563ogl"]
 
 [ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_g6rno"]
 [ext_resource type="Script" path="res://scripts/explain/explain_1.gd" id="1_jykfx"]
-[ext_resource type="Texture2D" uid="uid://d0omaaddy0r6d" path="res://assets/sprites/explain/SamplePhoto.jpg" id="3_2x4ot"]
 [ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="3_tmqrj"]
+[ext_resource type="Script" path="res://scripts/explain/sample_video.gd" id="4_1eumm"]
+[ext_resource type="VideoStream" path="res://assets/video/ゲームプレイ.ogv" id="5_g06tk"]
 
 [node name="Explain" type="Control"]
 layout_mode = 3
@@ -42,10 +43,17 @@ scroll_active = false
 autowrap_mode = 1
 tab_size = 40
 
-[node name="Sprite2D2" type="Sprite2D" parent="ColorRect"]
-editor_description = "ads"
-position = Vector2(268, 404)
-texture = ExtResource("3_2x4ot")
+[node name="CanvasLayer" type="CanvasLayer" parent="ColorRect"]
+
+[node name="sample" type="Node2D" parent="ColorRect/CanvasLayer"]
+position = Vector2(130, 0)
+script = ExtResource("4_1eumm")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect/CanvasLayer/sample"]
+offset_right = 480.0
+offset_bottom = 1050.0
+scale = Vector2(0.95, 0.95)
+stream = ExtResource("5_g06tk")
 
 [node name="back_Button" type="Button" parent="."]
 layout_mode = 1

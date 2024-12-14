@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=3 uid="uid://colc1xi76nb64"]
+
+[ext_resource type="Script" path="res://scripts/meaning-oseti/meaning_oseti_2.gd" id="1_hmadu"]
+[ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="2_artru"]
+[ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="3_uw5xt"]
+[ext_resource type="FontFile" uid="uid://bea1fmkicvihi" path="res://assets/font/YujiMai-Regular.ttf" id="4_k0j2j"]
+[ext_resource type="Texture2D" uid="uid://dy560th2kvxcm" path="res://assets/sprites/osechi/osechi_4.png" id="5_wsqoi"]
+[ext_resource type="Texture2D" uid="uid://biide3a67uwpo" path="res://assets/sprites/osechi/osechi_5.png" id="6_l8kjd"]
+[ext_resource type="Texture2D" uid="uid://b61mes5h4wbon" path="res://assets/sprites/osechi/osechi_6.png" id="7_7pg4c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_joo42"]
+font = ExtResource("4_k0j2j")
+font_size = 80
+font_color = Color(0.88, 0.3344, 0.57992, 1)
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_xpd5f"]
+font = ExtResource("3_uw5xt")
+font_size = 60
+font_color = Color(0.84, 0.3948, 0.40222, 1)
+outline_size = 15
+shadow_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_ohrxd"]
+font = ExtResource("3_uw5xt")
+font_size = 45
+font_color = Color(0.921569, 0.6, 0.388235, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+
+[node name="Meaning-oseti1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hmadu")
+
+[node name="HomeBg" type="Sprite2D" parent="."]
+position = Vector2(360, 640)
+scale = Vector2(0.291, 0.365)
+texture = ExtResource("2_artru")
+
+[node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
+
+[node name="back_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 1080.0
+offset_right = 538.0
+offset_bottom = 1179.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_uw5xt")
+theme_override_font_sizes/font_size = 50
+text = "ホームに戻る"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.11
+offset_left = -350.0
+offset_top = 80.0
+offset_right = 370.0
+offset_bottom = 887.2
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "健康長寿"
+label_settings = SubResource("LabelSettings_joo42")
+justification_flags = 162
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+昆布巻き
+"
+label_settings = SubResource("LabelSettings_xpd5f")
+justification_flags = 162
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "昆布は\"養老昆布\"とも呼ばれ、
+語呂合わせで
+											\"喜ぶ\"
+															お祝いの縁起物。 "
+label_settings = SubResource("LabelSettings_ohrxd")
+justification_flags = 162
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+海老
+"
+label_settings = SubResource("LabelSettings_xpd5f")
+justification_flags = 162
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "長い触角をもち、
+腰の曲がった老人の姿を
+連想させる長生きのシンボル。"
+label_settings = SubResource("LabelSettings_ohrxd")
+justification_flags = 162
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+黒豆"
+label_settings = SubResource("LabelSettings_xpd5f")
+justification_flags = 162
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "\"まめ\"に働く\"まめ\"に暮らす
+などの意味がある。
+"
+label_settings = SubResource("LabelSettings_ohrxd")
+justification_flags = 162
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(470, 255)
+texture = ExtResource("5_wsqoi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(470, 599)
+texture = ExtResource("6_l8kjd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(470, 870)
+texture = ExtResource("7_7pg4c")
+
+[connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

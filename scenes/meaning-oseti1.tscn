@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxys4eawb8jld"]
+
+[ext_resource type="Texture2D" uid="uid://bqx7mqlftbabi" path="res://assets/sprites/home/HomeBG.jpg" id="1_mts8e"]
+[ext_resource type="Script" path="res://scripts/meaning-oseti/meaning_oseti.gd" id="1_udndx"]
+[ext_resource type="FontFile" uid="uid://c1gyh1emmv12a" path="res://assets/font/07にくまるフォント.otf" id="2_adf6x"]
+[ext_resource type="FontFile" uid="uid://bea1fmkicvihi" path="res://assets/font/YujiMai-Regular.ttf" id="4_yx3vw"]
+[ext_resource type="Texture2D" uid="uid://cp63lgcp5lgrm" path="res://assets/sprites/osechi/osechi_3.png" id="5_ic05l"]
+[ext_resource type="Texture2D" uid="uid://jbkpnfg6gncl" path="res://assets/sprites/osechi/osechi_1.png" id="6_swsjn"]
+[ext_resource type="Texture2D" uid="uid://cj48smw4yqkeh" path="res://assets/sprites/osechi/osechi_2.png" id="7_3sb4x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5n1ck"]
+font = ExtResource("4_yx3vw")
+font_size = 75
+font_color = Color(1, 0.725, 0.34, 1)
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_3v8li"]
+font = ExtResource("2_adf6x")
+font_size = 60
+font_color = Color(0.865614, 0.750222, 0.111714, 1)
+outline_size = 15
+outline_color = Color(0.0278496, 0.122607, 0.106376, 1)
+shadow_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_4n1ck"]
+font = ExtResource("2_adf6x")
+font_size = 45
+font_color = Color(0.92, 0.59984, 0.3864, 1)
+outline_size = 15
+outline_color = Color(0.0665334, 3.33907e-07, 0.0361687, 1)
+shadow_size = 11
+
+[node name="Meaning-oseti1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udndx")
+
+[node name="HomeBg" type="Sprite2D" parent="."]
+position = Vector2(360, 640)
+scale = Vector2(0.291, 0.365)
+texture = ExtResource("1_mts8e")
+
+[node name="back_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 1080.0
+offset_right = 538.0
+offset_bottom = 1179.0
+theme_override_fonts/font = ExtResource("2_adf6x")
+theme_override_font_sizes/font_size = 50
+text = "次のページへ"
+
+[node name="AudioStreamManeger" type="AudioStreamPlayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.11
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 330.0
+offset_bottom = 809.2
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "子孫繁栄
+"
+label_settings = SubResource("LabelSettings_5n1ck")
+justification_flags = 162
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+伊達巻
+"
+label_settings = SubResource("LabelSettings_3v8li")
+justification_flags = 162
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "卵の黄色が土の色を連想させる
+ことから豊穣の意味をもつ "
+label_settings = SubResource("LabelSettings_4n1ck")
+justification_flags = 162
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+いくら
+"
+label_settings = SubResource("LabelSettings_3v8li")
+justification_flags = 162
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "真ん丸のその形から角がないので
+\"家族が円満にすごせますように\"
+という意味もある
+"
+label_settings = SubResource("LabelSettings_4n1ck")
+justification_flags = 162
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "
+数の子"
+label_settings = SubResource("LabelSettings_3v8li")
+justification_flags = 162
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "ニシンの卵である数の子は、
+「二親」と書き、多くの卵を持つ
+"
+label_settings = SubResource("LabelSettings_4n1ck")
+justification_flags = 162
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(470, 240)
+texture = ExtResource("5_ic05l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(470, 503)
+texture = ExtResource("6_swsjn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(470, 800)
+texture = ExtResource("7_3sb4x")
+
+[connection signal="pressed" from="back_Button" to="." method="_on_back_button_pressed"]

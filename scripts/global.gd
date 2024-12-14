@@ -3,7 +3,7 @@ extends Node
 # 有効化するosechiの数
 const osechi_num = 6
 const osechi_size = 64
-const can_place_osechi = 1
+const can_place_osechi = 2
 var grid = [
 		[0, 0, 0, 0, 0, 0, 0, 0], 
 		[0, 0, 0, 0, 0, 0, 0, 0], 

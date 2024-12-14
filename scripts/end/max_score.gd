@@ -10,9 +10,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_max_score(Score.score)
-	text = str(_max_score)
+	text = str(ceil(_max_score))
 
-func update_max_score(current_score: int) -> void:
+func update_max_score(current_score) -> void:
 	if current_score > _max_score:
 		_max_score = current_score
 		save_max_score()
